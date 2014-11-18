@@ -59,33 +59,39 @@
 
                         <hr/>
 
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h2>
+                                    Recent Work
+                                </h2>
+                                {% if site.categories.portfolio.size >= 1 %}
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <!-- Here comes the portfolio -->
+                                    </div>
+                                </div>
 
-                        <h2>
-                            Recent Work
-                        </h2>
-                        {% if site.categories.portfolio.size >= 1 %}
+                                <button class="btn btn-jvar">
+                                    Full Portfolio
+                                </button>
+                                {% else %}
+                                There are no recent works added yet!
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        {% if site.safe == true %}
                             <div class="row">
-                                <div class="col-md-6">
-                                    <!-- Here comes the portfolio -->
+                                <div class="col-md-12">
+                                    <hr/>
+
+                                    <h2>Get In Touch</h2>
+                                    <p>
+                                        Have you became interested by our works, want to become a customer?<br/>
+                                        Or want to become an employee please <a href="mailto:jasper@jvar.nl">contact me</a>.
+                                    </p>
                                 </div>
                             </div>
-
-                            <button class="btn btn-jvar">
-                                Full Portfolio
-                            </button>
-                        {% else %}
-                            There are no recent works added yet!
-                        {% endif %}
-
-                        {% if site.safe %}
-
-                            <hr/>
-
-                            <h2>Get In Touch</h2>
-                            <p>
-                                Have you became interested by our works? <br/>
-                                Feel free to contact me.
-                            </p>
                         {% endif %}
                     {% else %}
                         {{content}}
