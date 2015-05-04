@@ -1,3 +1,5 @@
 name: Jvar
 markdown: redcarpet
-pygments: true
+highlighter: true
+sass:
+  sass_dir: assets/css
