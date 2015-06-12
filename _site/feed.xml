@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Jvar.nl</title>
+    <description>Professional PHP and NodeJS developer</description>
+    <link>http://jvar.nl</link>
+    <atom:link href="http://jvar.nl/feed.xml" rel="self" type="application/rss+xml" />
+    
+      <item>
+        <title>Hello World</title>
+        
+        
+          <description>&lt;p&gt;Welcome to our new website.&lt;/p&gt;
+</description>
+        
+        <pubDate>Fri, 12 Jun 2015 00:00:00 +0200</pubDate>
+        <link>http://jvar.nl/2015/hello-world/</link>
+        <guid isPermaLink="true">http://jvar.nl/2015/hello-world/</guid>
+      </item>
+    
+  </channel>
+</rss>

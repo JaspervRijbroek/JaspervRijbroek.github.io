@@ -1,5 +1,37 @@
-name: Jvar
+name: Jvar.nl
+description: Professional PHP and NodeJS developer
+meta_description: "Done projects and stuff."
+
+aboutPage: true
+
 markdown: redcarpet
-highlighter: true
-sass:
-  sass_dir: assets/css
+redcarpet:
+  extensions: ["tables"]
+highlighter: pygments
+
+paginate: 20
+baseurl: /
+domain_name: 'http://jvar.nl'
+google_analytics: 'UA-XXXXXXXX-X'
+disqus_shortname: 'your-disqus-shortname'
+
+# Details for the RSS feed generator
+url:            'http://jvar.nl'
+author:         'Jasper van Rijbroek'
+authorTwitter:  'JaspervRijbro'
+
+permalink:       /:year/:title/
+
+defaults:
+    -
+        scope:
+            path: "" # empty string for all files
+            type: pages
+        values:
+            layout: default
+    -
+        scope:
+            path: "" # empty string for all files
+            type: posts
+        values:
+            layout: post
