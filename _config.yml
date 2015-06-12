@@ -12,13 +12,12 @@ highlighter: pygments
 paginate: 20
 baseurl: /
 domain_name: 'http://jvar.nl'
-google_analytics: 'UA-XXXXXXXX-X'
-disqus_shortname: 'your-disqus-shortname'
+google_analytics: 'UA-32550863-6'
 
 # Details for the RSS feed generator
 url:            'http://jvar.nl'
 author:         'Jasper van Rijbroek'
-authorTwitter:  'JaspervRijbro'
+authorTwitter:  'JaspervanRijbro'
 
 permalink:       /:year/:title/
 
