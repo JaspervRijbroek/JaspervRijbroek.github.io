@@ -3,10 +3,11 @@
         <a href='{{ site.baseurl }}{{ page.about }}'> <span class="arrow">←</span> Home </a>
     {% endif %}
 
-    {% if page.url != "/about/" %}
-        {% if site.aboutPage %}
-            <a href='{{ site.baseurl }}about'>About </a>
-        {% endif %}
+    {% if page.url != "/about.html" %}
+            <a href='{{ site.baseurl }}about.html'>About </a>
+    {% endif %}
+    {% if page.url != "/portfolio.html" %}
+            <a href='{{ site.baseurl }}portfolio.html'>Portfolio </a>
     {% endif %}
     <a class="cta" href="{{ site.baseurl }}feed.xml">Subscribe</a>
 </nav>
