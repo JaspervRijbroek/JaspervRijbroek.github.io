@@ -3,7 +3,7 @@ title: About
 profile: true
 ---
 
-While currently working at [Royals@Work](http://royalsatwork.nl) I will keep myself up to date of the newest developments.
+While currently working at [TeemrWorks](http://teemr.works) I will keep myself up to date of the newest developments.
 
 In my spare time I love to work with [Nooku](http://nooku.org) (PHP), [Raddish](http://getraddish.com) (NodeJS) and personal projects.
 
@@ -32,7 +32,8 @@ Zend Framework | Basic
 Employer | Period | Kind
 -------- | ------ | ----
 Jvar | 5/2015 - Present | Owner
-Royals@Work | 5/2015 - Present | Employment
+TeemrWorks | 10/2015 - Present | Employment
+Royals@Work | 5/2015 - 10/2015 | Employment
 Moyo Web Architects | 4/2011 - 4/2015 | Employment
 OWG | 1/2009 - 3/2011 | Employment
 

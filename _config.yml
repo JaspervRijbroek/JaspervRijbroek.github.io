@@ -4,9 +4,6 @@ meta_description: "Done projects and stuff."
 
 aboutPage: true
 
-markdown: redcarpet
-redcarpet:
-  extensions: ["tables"]
 highlighter: pygments
 
 paginate: 20
@@ -20,6 +17,8 @@ author:         'Jasper van Rijbroek'
 authorTwitter:  'JaspervanRijbro'
 
 permalink:       /:year/:title/
+
+gems: [jekyll-paginate]
 
 defaults:
     -
