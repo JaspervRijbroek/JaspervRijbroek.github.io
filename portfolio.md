@@ -1,6 +1,7 @@
 ---
 title: About
 profile: true
+permalink: /portfolio.html
 ---
 
 Below is a list with my portfolio of projects I worked on in the past years.

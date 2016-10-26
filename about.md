@@ -1,6 +1,7 @@
 ---
 title: About
 profile: true
+permalink: /about.html
 ---
 
 While currently working at [TeemrWorks](http://teemr.works) I will keep myself up to date of the newest developments.
