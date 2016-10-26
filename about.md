@@ -25,6 +25,7 @@ The skill with frameworks I received over the years.
 Framework | Level
 --------- | -----
 Nooku | Good
+Laravel | Avarage
 Sympfony | Basic
 Zend Framework | Basic
 
