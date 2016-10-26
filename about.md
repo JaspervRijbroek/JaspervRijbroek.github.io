@@ -32,6 +32,7 @@ Zend Framework | Basic
 Employer | Period | Kind
 -------- | ------ | ----
 Jvar | 5/2015 - Present | Owner
+Brickson | 10-2016 - Present | Employment
 TeemrWorks | 10/2015 - Present | Employment
 Royals@Work | 5/2015 - 10/2015 | Employment
 Moyo Web Architects | 4/2011 - 4/2015 | Employment
