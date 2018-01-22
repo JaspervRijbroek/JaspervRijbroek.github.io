@@ -1,0 +1,55 @@
+==================================================================
+https://keybase.io/jasper199069
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://jvar.nl
+  * I am jasper199069 (https://keybase.io/jasper199069) on keybase.
+  * I have a public key ASBEQBXmnnhhlpAI-uza3MWns-ng4BaYMLweflbVU9FufAo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120444015e69e7861969008faecdadcc5a7b3e9e0e0169830bc1e7e56d553d16e7c0a",
+      "host": "keybase.io",
+      "kid": "0120444015e69e7861969008faecdadcc5a7b3e9e0e0169830bc1e7e56d553d16e7c0a",
+      "uid": "30a78016452438ee7aa67e1f755fa119",
+      "username": "jasper199069"
+    },
+    "merkle_root": {
+      "ctime": 1516605919,
+      "hash": "2790db6eb7a8d138a22abe0de698ee6b0cf32178ea4b0b7add6daef0cc124474e3d6ec5a69812e00117dff856abbd59d11e084e59e3797a361fe04f5d2c441d1",
+      "hash_meta": "60457de374892ac94904ce6f4a55a96c1fa94b6cb3f9fbbbf914da8d4e318c56",
+      "seqno": 1954311
+    },
+    "service": {
+      "hostname": "jvar.nl",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "1.0.38"
+  },
+  "ctime": 1516606052,
+  "expire_in": 504576000,
+  "prev": "dd64036ec490f74ba4a431665473cd69525b4cce47c4344a30df55aaf1bbf928",
+  "seqno": 18,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgREAV5p54YZaQCPrs2tzFp7Pp4OAWmDC8Hn5W1VPRbnwKp3BheWxvYWTFA0R7ImJvZHkiOnsia2V5Ijp7ImVsZGVzdF9raWQiOiIwMTIwNDQ0MDE1ZTY5ZTc4NjE5NjkwMDhmYWVjZGFkY2M1YTdiM2U5ZTBlMDE2OTgzMGJjMWU3ZTU2ZDU1M2QxNmU3YzBhIiwiaG9zdCI6ImtleWJhc2UuaW8iLCJraWQiOiIwMTIwNDQ0MDE1ZTY5ZTc4NjE5NjkwMDhmYWVjZGFkY2M1YTdiM2U5ZTBlMDE2OTgzMGJjMWU3ZTU2ZDU1M2QxNmU3YzBhIiwidWlkIjoiMzBhNzgwMTY0NTI0MzhlZTdhYTY3ZTFmNzU1ZmExMTkiLCJ1c2VybmFtZSI6Imphc3BlcjE5OTA2OSJ9LCJtZXJrbGVfcm9vdCI6eyJjdGltZSI6MTUxNjYwNTkxOSwiaGFzaCI6IjI3OTBkYjZlYjdhOGQxMzhhMjJhYmUwZGU2OThlZTZiMGNmMzIxNzhlYTRiMGI3YWRkNmRhZWYwY2MxMjQ0NzRlM2Q2ZWM1YTY5ODEyZTAwMTE3ZGZmODU2YWJiZDU5ZDExZTA4NGU1OWUzNzk3YTM2MWZlMDRmNWQyYzQ0MWQxIiwiaGFzaF9tZXRhIjoiNjA0NTdkZTM3NDg5MmFjOTQ5MDRjZTZmNGE1NWE5NmMxZmE5NGI2Y2IzZjlmYmJiZjkxNGRhOGQ0ZTMxOGM1NiIsInNlcW5vIjoxOTU0MzExfSwic2VydmljZSI6eyJob3N0bmFtZSI6Imp2YXIubmwiLCJwcm90b2NvbCI6Imh0dHBzOiJ9LCJ0eXBlIjoid2ViX3NlcnZpY2VfYmluZGluZyIsInZlcnNpb24iOjF9LCJjbGllbnQiOnsibmFtZSI6ImtleWJhc2UuaW8gZ28gY2xpZW50IiwidmVyc2lvbiI6IjEuMC4zOCJ9LCJjdGltZSI6MTUxNjYwNjA1MiwiZXhwaXJlX2luIjo1MDQ1NzYwMDAsInByZXYiOiJkZDY0MDM2ZWM0OTBmNzRiYTRhNDMxNjY1NDczY2Q2OTUyNWI0Y2NlNDdjNDM0NGEzMGRmNTVhYWYxYmJmOTI4Iiwic2Vxbm8iOjE4LCJ0YWciOiJzaWduYXR1cmUifaNzaWfEQH/pNSq7sskDHjbvEwFQY409ET2BwdM5IS61tWS6XXW3D8T+TWRx6IeAykLM7mf/ZxRbzB2OU4Nm1QlKD6MueA6oc2lnX3R5cGUgpGhhc2iCpHR5cGUIpXZhbHVlxCAzMHbVbKZtqYrI2kuUCo+tjowYThX45QFv1i0rWx1geKN0YWfNAgKndmVyc2lvbgE=
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/jasper199069
+
+==================================================================
