@@ -14,7 +14,8 @@ The level of skills I received over the years.
 Skill   | Level
 ------- | -----
 PHP     | Good
-NodeJS  | Good
+JavaScript  | Good
+SQL | Avarage / Good
 Linux | Good
 Mac OSX | Good
 Windows | Avarage / Good
@@ -24,18 +25,18 @@ The skill with frameworks I received over the years.
 
 Framework | Level
 --------- | -----
-Nooku | Good
-Laravel | Avarage
+Laravel | Good
 Sympfony | Basic
-Zend Framework | Basic
+Zend Framework | Avarage
+ExpressJS | Good
+React | Basic
 
 ## Work experience
 
 Employer | Period | Kind
 -------- | ------ | ----
-Jvar | 5/2015 - Present | Owner
 Brickson | 10-2016 - Present | Employment
-TeemrWorks | 10/2015 - Present | Employment
+Jvar | 8/2013 - 11-2016 | Owner
 Royals@Work | 5/2015 - 10/2015 | Employment
 Moyo Web Architects | 4/2011 - 4/2015 | Employment
 OWG | 1/2009 - 3/2011 | Employment
