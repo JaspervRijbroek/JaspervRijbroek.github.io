@@ -1,11 +1,8 @@
 ---
-title: A holiday and marriage part 2
-description: My own ceremony
+description: My own wedding ceremony
 ---
 
 It is time agaim for a holiday to Bali however this time with an active vulcano and a lot of plans.
-
-<!-- more --
 
 Yes it is known for some time now that the vulcano of Bali is spewing smoke.
 We have seen this first hand in the airplane yesterday (different flight route it seemed) and to be honest it didn't look that impressive
