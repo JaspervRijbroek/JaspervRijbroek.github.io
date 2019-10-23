@@ -1,13 +1,9 @@
 <nav class="main-nav">
-    {% if page.url != "/index.html" %}
-        <a href='/{{ page.about }}'> <span class="arrow">←</span> Home </a>
+    {% if page.url != "/index.html" and page.url != "/" %}
+    <a href="/"> <span class="arrow">←</span> Home </a>
     {% endif %}
 
-    {% if page.url != "/about.html" %}
-            <a href='/about.html'>About </a>
-    {% endif %}
-    {% if page.url != "/portfolio.html" %}
-            <a href='/portfolio.html'>Portfolio </a>
-    {% endif %}
+    <a href="/about.html">About </a>
+    <a href="/portfolio.html">Portfolio </a>
     <a class="cta" href="/feed.xml">Subscribe</a>
 </nav>
