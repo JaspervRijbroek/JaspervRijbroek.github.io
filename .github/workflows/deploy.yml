@@ -13,11 +13,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: "Check token"
-      env:
-        TOKEN: ${{ secrets.access_token }}
-      run: echo $TOKEN
-
     - name: Publish Gatsby Site
       uses: xmflsct/action-publish-gatsby@v1.0.0
       env:
@@ -26,6 +21,6 @@ jobs:
         GOOGLE_ANALYTICS_KEY: "UA-32550863-6"
       with:
         publishBranch: "gh-pages"
-        token: ${{ secrets.access_token }}
+        token: ${{ secrets.GITHUB_TOKEN }}
         name: "Jasper van Rijbroek"
         email: "jasper@jvar.nl"
