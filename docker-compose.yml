@@ -1,0 +1,20 @@
+version: "3"
+services:
+  node:
+    image: "node:12"
+    container_name: "jvar-gatsby"
+    working_dir: "/app"
+    user: "1000:1000"
+    volumes:
+      - ".:/app"
+    ports:
+      - "8000:8000"
+  php:
+    image: "php:7.4-cli"
+    container_name: "jvar-php"
+    working_dir: "/app"
+    user: "1000:1000"
+    volumes:
+      - "./public:/app"
+    ports:
+      - "8000:8000"

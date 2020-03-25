@@ -1,0 +1,31 @@
+name: Deploy
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: "Check token"
+      env:
+        TOKEN: ${{ secrets.access_token }}
+      run: echo $TOKEN
+
+    - name: Publish Gatsby Site
+      uses: xmflsct/action-publish-gatsby@v1.0.0
+      env:
+        ALGOLIA_APP_ID: ${{ secrets.algolia_app_id }}
+        ALGOLIA_ADMIN_KEY: ${{ secrets.algolia_admin_key }}
+        GOOGLE_ANALYTICS_KEY: "UA-32550863-6"
+      with:
+        publishBranch: "gh-pages"
+        token: ${{ secrets.access_token }}
+        name: "Jasper van Rijbroek"
+        email: "jasper@jvar.nl"
