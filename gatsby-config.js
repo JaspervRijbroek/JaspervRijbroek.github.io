@@ -3,7 +3,6 @@ const queries = require("./src/utils/algolia");
 require("dotenv").config();
 
 module.exports = {
-    pathPrefix: '/jvar.new',
     siteMetadata: {
         title: `jvar.nl`,
         description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,

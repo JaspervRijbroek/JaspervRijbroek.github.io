@@ -20,7 +20,7 @@ jobs:
         ALGOLIA_ADMIN_KEY: ${{ secrets.algolia_admin_key }}
         GOOGLE_ANALYTICS_KEY: "UA-32550863-6"
       with:
-        publishBranch: "gh-pages"
-        token: ${{ secrets.GITHUB_TOKEN }}
+        publishBranch: "master"
+        token: ${{ secrets.push_token }}
         name: "Jasper van Rijbroek"
         email: "jasper@jvar.nl"
