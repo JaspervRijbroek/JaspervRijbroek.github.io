@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$USER_HOME$/Downloads/JaspervRijbroek.github.io-master/.idea/JaspervRijbroek.github.io-master.iml" filepath="$USER_HOME$/Downloads/JaspervRijbroek.github.io-master/.idea/JaspervRijbroek.github.io-master.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/jvar.new.iml" filepath="$PROJECT_DIR$/.idea/jvar.new.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/JaspervRijbroek.github.io.iml" filepath="$PROJECT_DIR$/.idea/JaspervRijbroek.github.io.iml" />
     </modules>
   </component>
 </project>

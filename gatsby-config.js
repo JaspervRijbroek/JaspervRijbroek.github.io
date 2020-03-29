@@ -65,6 +65,7 @@ module.exports = {
                     default: require.resolve("./src/templates/page.js"),
                 }
             }
-        }
+        },
+        `gatsby-plugin-offline`
     ],
 };
