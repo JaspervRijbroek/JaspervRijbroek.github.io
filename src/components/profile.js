@@ -28,11 +28,11 @@ export const Profile = ({isFooter = false}) => {
             <div className="profile">
                 <section id="wrapper">
                     <header id="header">
-                        <a href="about.html">
+                        <Link to='/about'>
                             <span id="avatar">
                                 <Img fluid={data.placeholderImage.childImageSharp.fluid}/>
                             </span>
-                        </a>
+                        </Link>
 
                         <h1>{data.site.siteMetadata.me.title}</h1>
                         <h2>{data.site.siteMetadata.me.slogan}</h2>
