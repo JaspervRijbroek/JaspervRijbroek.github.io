@@ -1,5 +1,4 @@
 import React from "react"
-import "../assets/css/style.css"
 import Header from "../components/header";
 import PropTypes from "prop-types";
 import {Profile} from "../components/profile";

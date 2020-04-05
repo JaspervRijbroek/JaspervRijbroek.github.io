@@ -7,10 +7,6 @@ const client = algoliasearch('IMR7H3NXXW', 'c559f11f4c0ecb1bf2540a712cda78d5');
 const index = client.initIndex('Posts');
 
 export default class IndexPage extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     updateSearch(query) {
         if (!query) {
             this.setState({
