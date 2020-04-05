@@ -6,7 +6,8 @@ const postQuery = `query {
       node {
         objectID: id
         fields {
-          date(formatString: "MMM D, YYYY")
+          date(formatString: "MMM D, YYYY"),
+          path
         }
         frontmatter {
           title
@@ -17,8 +18,7 @@ const postQuery = `query {
   }
 }`;
 const flatten = arr =>
-    arr.map(({node: {frontmatter, ...rest}}) => ({
-        ...frontmatter,
+    arr.map(({node: {...rest}}) => ({
         ...rest,
     }));
 const settings = {attributesToSnippet: [`excerpt:20`]};

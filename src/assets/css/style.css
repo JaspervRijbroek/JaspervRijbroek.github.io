@@ -363,10 +363,25 @@ img {
 }
 
 /*=========================================
+Search
+=========================================== */
+.search {
+    border-bottom: 1px solid #eee;
+}
+
+.search input {
+    width: 100%;
+    margin-bottom: 40px;
+    padding: 5px;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+}
+
+/*=========================================
 Post List
 =========================================== */
 #post-list,#archive-list {
-    margin-top: 100px;
+    margin-top: 50px;
 }
 
 #post-list li,#archive-list li {
