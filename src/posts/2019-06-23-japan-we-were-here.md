@@ -1,6 +1,7 @@
 ---
 title: "Japan: We were here"
 description: Our first vacation in a long time
+topics: ['vacation']
 ---
 
 So for this (past) vacation we have chosen Tokyo, Japan.  

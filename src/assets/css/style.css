@@ -224,6 +224,10 @@ em, i { font-style: italic; }
 
 }
 
+.topic header {
+    margin-bottom: 40px;
+}
+
 .post h1 {
     margin-bottom: 20px;
     color: #222;

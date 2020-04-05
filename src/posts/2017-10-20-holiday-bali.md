@@ -1,6 +1,7 @@
 ---
 title: Holiday Bali
 description: My own wedding ceremony
+topics: ['vacation', 'bali']
 ---
 
 It is time agaim for a holiday to Bali however this time with an active vulcano and a lot of plans.

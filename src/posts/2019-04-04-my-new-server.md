@@ -1,6 +1,7 @@
 ---
 title: My new server
 description: Time for something new
+topics: ['server', 'docker']
 ---
 
 ## After some time it is time for renewal. This time it my personal server that is now being renewed.

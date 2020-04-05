@@ -1,6 +1,7 @@
 ---
 title: Building a game server
 description: A new challenge
+topics: ['gaming', 'server']
 ---
 
 Its been some time since I let something of me being heard.  

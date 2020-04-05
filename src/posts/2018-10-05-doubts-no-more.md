@@ -1,6 +1,7 @@
 ---
 title: Doubts no more
 description: The end of the doubts
+topics: ['life']
 ---
 
 Since the last blog post I wrote and now things have become very busy at work, almost to a point that I think I am breaking under the preassure....

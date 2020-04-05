@@ -1,6 +1,7 @@
 ---
 title: Docker all the things
 description: Why didn't I did this earlier
+topics: ['server', 'docker']
 ---
 
 Since a few weeks I am working with docker it seems to make more and more sense to me.

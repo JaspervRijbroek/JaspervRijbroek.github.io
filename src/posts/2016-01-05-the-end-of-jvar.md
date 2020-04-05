@@ -1,6 +1,7 @@
 ---
 title: Then end of Jvar
 description: A company that stops
+topics: ['company']
 ---
 
 For the most of you reading this post it might be a small shock, but don't be alarmed.

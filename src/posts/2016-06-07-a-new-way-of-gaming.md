@@ -1,6 +1,7 @@
 ---
 title: A new way of gaming
 description: Something different about gaming
+topics: ['cloud', 'gaming']
 ---
 
 Gaming, something most of us do at some point ofcourse everyone on his or her own way.  

@@ -1,6 +1,7 @@
 ---
 title: My ambitions
 description: What do I want from my future?
+topics: ['life']
 ---
 
 Some time ago someone asked what are my ambitions and what do I want to learn for myself.

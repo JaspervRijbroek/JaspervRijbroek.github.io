@@ -1,6 +1,7 @@
 ---
 title: Another year of Aurora
 description: Another year passes
+topics: ['nodejs']
 ---
 
 ## A few years ago I set out to create my own Private Server based on NodeJS another year has passed so now we are in the second year of development, aaand a lot has happened in the last year.

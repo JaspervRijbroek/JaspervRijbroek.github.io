@@ -1,6 +1,7 @@
 ---
 title:  Hello World
 description: Welcome to our new website.
+topics: ['website']
 ---
 
 Welcome to our new website.
