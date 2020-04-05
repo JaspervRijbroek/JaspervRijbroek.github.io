@@ -8,7 +8,7 @@ const TopicTemplate = ({data, pageContext}) => {
         <DefaultTemplate>
             <div className="topic post">
                 <header id="header">
-                    <h1>Topic: {pageContext.topic}</h1>
+                    <h1>{pageContext.topic}</h1>
                 </header>
             </div>
 

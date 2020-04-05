@@ -5,6 +5,7 @@ const postQuery = `query {
     edges {
       node {
         objectID: id
+        html
         fields {
           date(formatString: "MMM D, YYYY"),
           path

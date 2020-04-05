@@ -28,16 +28,20 @@ exports.onCreateNode = ({node, actions}) => {
 
 exports.createPages = async ({actions, graphql, reporter}) => {
     const {createPage} = actions,
-        blogPostTemplate = path.resolve(`src/templates/blog.js`),
+        postTemplate = path.resolve(`src/templates/post.js`),
         topicTemplate = path.resolve('src/templates/topic.js'),
-        blogResult = await graphql(`{
+        postResult = await graphql(`{
               allMarkdownRemark(
                 sort: { order: DESC, fields: [fields___date] }
               ) {
                 edges {
                   node {
+                    id
                     fields {
                       path
+                    }
+                    frontmatter {
+                        topics
                     }
                   }
                 }
@@ -56,17 +60,20 @@ exports.createPages = async ({actions, graphql, reporter}) => {
             }
         }`);
     // Handle errors
-    if (blogResult.errors || topicResults.errors) {
+    if (postResult.errors || topicResults.errors) {
         reporter.panicOnBuild(`Error while running GraphQL query.`)
         return
     }
 
     // Create pages for the blog pages.
-    blogResult.data.allMarkdownRemark.edges.forEach(({node}) => {
+    postResult.data.allMarkdownRemark.edges.forEach(({node}) => {
         createPage({
             path: node.fields.path,
-            component: blogPostTemplate,
-            context: {}, // additional data can be passed via context
+            component: postTemplate,
+            context: {
+                id: node.id,
+                topics: node.frontmatter.topics
+            }
         })
     });
 
