@@ -367,6 +367,7 @@ Search
 =========================================== */
 .search {
     border-bottom: 1px solid #eee;
+    margin-bottom: 40px;
 }
 
 .search input {
@@ -380,8 +381,8 @@ Search
 /*=========================================
 Post List
 =========================================== */
-#post-list,#archive-list {
-    margin-top: 50px;
+#archive-list {
+    margin-top: 100px;
 }
 
 #post-list li,#archive-list li {

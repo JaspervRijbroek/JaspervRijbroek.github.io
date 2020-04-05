@@ -7,14 +7,18 @@ const client = algoliasearch('IMR7H3NXXW', 'c559f11f4c0ecb1bf2540a712cda78d5');
 const index = client.initIndex('Posts');
 
 export default class IndexPage extends React.Component {
-    constructor() {
-        super();
-
-        this.state = {};
+    constructor(props) {
+        super(props);
     }
 
     updateSearch(query) {
-        index.search(query).then( ({hits}) => {
+        if (!query) {
+            this.setState({
+                searchResults: false
+            });
+        }
+
+        index.search(query).then(({hits}) => {
             this.setState({
                 searchResults: hits.map((item) => {
                     item.id = item.objectID;
@@ -30,7 +34,7 @@ export default class IndexPage extends React.Component {
     getPosts() {
         // If there is no search query, we will show the normal posts.
         // Else a filter will be done.
-        if(this.state && this.state.searchResults && this.state.searchResults.length) {
+        if (this.state && this.state.searchResults) {
             return this.state.searchResults;
         }
 
@@ -38,26 +42,35 @@ export default class IndexPage extends React.Component {
     }
 
     render() {
+        let posts = this.getPosts();
+
         return (
             <PageTemplate isHome={true}>
 
                 <div className="search">
-                    <input type="text" placeholder="Search" onKeyUp={(event) => this.updateSearch(event.target.value)} />
+                    <input type="text" placeholder="Search" onKeyUp={(event) => this.updateSearch(event.target.value)}/>
                 </div>
 
-                <ul id="post-list">
-                    {this.getPosts().map(node => (
-                        <li key={node.node.id}>
-                            <Link to={node.node.fields.path}>
-                                <aside className="dates">{node.node.fields.date}</aside>
-                            </Link>
-                            <Link to={node.node.fields.path}>
-                                {node.node.frontmatter.title}
-                                <h2>{node.node.frontmatter.description}</h2>
-                            </Link>
-                        </li>
-                    ))}
-                </ul>
+                {posts && posts.length > 0 && (
+                    <ul id="post-list">
+                        {posts.map(node => (
+                            <li key={node.node.id}>
+                                <Link to={node.node.fields.path}>
+                                    <aside className="dates">{node.node.fields.date}</aside>
+                                </Link>
+                                <Link to={node.node.fields.path}>
+                                    {node.node.frontmatter.title}
+                                    <h2>{node.node.frontmatter.description}</h2>
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                )}
+
+                {(!posts || !posts.length) && (
+                    <p>No posts found!</p>
+                )}
+
 
             </PageTemplate>
         );
