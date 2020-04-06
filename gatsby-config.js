@@ -22,8 +22,6 @@ module.exports = {
                 path: `${__dirname}/src/assets/images`,
             },
         },
-        `gatsby-transformer-sharp`,
-        `gatsby-plugin-sharp`,
         {
             resolve: `gatsby-source-filesystem`,
             options: {
@@ -31,11 +29,19 @@ module.exports = {
                 name: `posts`,
             },
         },
+        `gatsby-plugin-sharp`,
+        `gatsby-transformer-sharp`,
         {
             resolve: `gatsby-transformer-remark`,
             options: {
                 plugins: [
-                    `gatsby-remark-reading-time`
+                    `gatsby-remark-reading-time`,
+                    {
+                        resolve: `gatsby-remark-images`,
+                        options: {
+                            withWebp: true
+                        }
+                    }
                 ]
             }
         },
@@ -66,6 +72,7 @@ module.exports = {
                 }
             }
         },
-        `gatsby-plugin-offline`
+        `gatsby-plugin-offline`,
+        `gatsby-plugin-sass`
     ],
 };

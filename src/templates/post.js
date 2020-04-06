@@ -4,14 +4,31 @@ import {graphql, Link} from "gatsby";
 import {Profile} from "../components/profile";
 
 const BlogTemplate = ({data}) => {
-    console.log(data);
+    console.log(data.markdownRemark.frontmatter.topics);
 
     return (
         <DefaultTemplate>
             <article className="post">
                 <header>
-                    <h1>{data.markdownRemark.frontmatter.title}</h1>
-                    <h2 className="headline">{data.markdownRemark.fields.date}</h2>
+                    <h1>
+                        {data.markdownRemark.frontmatter.title}
+                    </h1>
+
+                    <h2 className="headline">
+                        <span>On </span>{data.markdownRemark.fields.date}
+
+                        {data.markdownRemark.frontmatter && data.markdownRemark.frontmatter.topics && data.markdownRemark.frontmatter.topics.length && (
+                            <span className="topics">
+                                <span> in </span>
+
+                                {data.markdownRemark.frontmatter.topics.map((topic) => (
+                                    <Link to={`/topic/${topic}`}>
+                                        {topic}
+                                    </Link>
+                                ))}
+                            </span>
+                        )}
+                    </h2>
                 </header>
                 <section id="post-body" dangerouslySetInnerHTML={{__html: data.markdownRemark.html}}/>
             </article>

@@ -1,7 +1,8 @@
 import React from "react"
 import DefaultTemplate from "./default";
-import {graphql, Link} from "gatsby";
+import {graphql} from "gatsby";
 import {Profile} from "../components/profile";
+import PostRow from "../components/post-row";
 
 const TopicTemplate = ({data, pageContext}) => {
     return (
@@ -15,15 +16,7 @@ const TopicTemplate = ({data, pageContext}) => {
             {data && data.allMarkdownRemark && data.allMarkdownRemark.nodes && data.allMarkdownRemark.nodes.length && (
                 <ul id="post-list">
                     {data.allMarkdownRemark.nodes.map((node) => (
-                        <li key={node.id}>
-                            <Link to={node.fields.path}>
-                                <aside className="dates">{node.fields.date}</aside>
-                            </Link>
-                            <Link to={node.fields.path}>
-                                {node.frontmatter.title}
-                                <h2>{node.frontmatter.description}</h2>
-                            </Link>
-                        </li>
+                        <PostRow key={node.id} post={node} />
                     ))}
                 </ul>
             )}

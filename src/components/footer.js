@@ -20,6 +20,6 @@ const Footer = () => {
             <p className="small">© Copyright 2019 {data.site.siteMetadata.me.title}</p>
         </footer>
     );
-}
+};
 
 export default Footer;

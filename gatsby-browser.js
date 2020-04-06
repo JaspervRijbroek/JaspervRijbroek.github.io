@@ -4,4 +4,4 @@
  * See: https://www.gatsbyjs.org/docs/browser-apis/
  */
 
-require("./src/assets/css/style.css")
+require("./src/assets/css/style.scss")

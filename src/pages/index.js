@@ -1,7 +1,8 @@
 import React from "react"
-import {graphql, Link} from "gatsby";
+import {graphql} from "gatsby";
 import PageTemplate from "../templates/page";
 import algoliasearch from 'algoliasearch';
+import PostRow from "../components/post-row";
 
 const client = algoliasearch('IMR7H3NXXW', 'c559f11f4c0ecb1bf2540a712cda78d5');
 const index = client.initIndex('Posts');
@@ -49,16 +50,8 @@ export default class IndexPage extends React.Component {
 
                 {posts && posts.length > 0 && (
                     <ul id="post-list">
-                        {posts.map(node => (
-                            <li key={node.node.id}>
-                                <Link to={node.node.fields.path}>
-                                    <aside className="dates">{node.node.fields.date}</aside>
-                                </Link>
-                                <Link to={node.node.fields.path}>
-                                    {node.node.frontmatter.title}
-                                    <h2>{node.node.frontmatter.description}</h2>
-                                </Link>
-                            </li>
+                        {posts.map(({node}) => (
+                            <PostRow post={node} key={node.id} />
                         ))}
                     </ul>
                 )}
