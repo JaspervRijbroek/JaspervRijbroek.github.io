@@ -37,7 +37,7 @@ const BlogTemplate = ({data}) => {
                 <Profile isFooter={true}/>
             </footer>
 
-            {data && data.allMarkdownRemark && data.allMarkdownRemark.nodes && data.allMarkdownRemark.nodes.length && (
+            {data && data.allMarkdownRemark && data.allMarkdownRemark.nodes && data.allMarkdownRemark.nodes.length > 0 && (
                 <ul id="post-list" className="archive readmore">
                     <h3>More like this</h3>
 
