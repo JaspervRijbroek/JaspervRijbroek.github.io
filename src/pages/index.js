@@ -26,6 +26,7 @@ export default class IndexPage extends React.Component {
 
         index.search(query).then(({hits}) => {
             this.setState({
+                currentPage: 0,
                 searchResults: hits.map((item) => {
                     item.id = item.objectID;
 
