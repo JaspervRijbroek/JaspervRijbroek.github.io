@@ -8,6 +8,15 @@ const client = algoliasearch('IMR7H3NXXW', 'c559f11f4c0ecb1bf2540a712cda78d5');
 const index = client.initIndex('Posts');
 
 export default class IndexPage extends React.Component {
+    constructor() {
+        super();
+
+        this.state ={
+            currentPage: 0,
+            postLimit: 5
+        };
+    }
+
     updateSearch(query) {
         if (!query) {
             this.setState({
@@ -39,7 +48,9 @@ export default class IndexPage extends React.Component {
     }
 
     render() {
-        let posts = this.getPosts();
+        let posts = this.getPosts(),
+            hasPagination = posts.length > this.state.postLimit,
+            currentPosts = posts.slice(this.state.postLimit * this.state.currentPage, this.state.postLimit * this.state.currentPage + this.state.postLimit);
 
         return (
             <PageTemplate isHome={true}>
@@ -50,8 +61,8 @@ export default class IndexPage extends React.Component {
 
                 {posts && posts.length > 0 && (
                     <ul id="post-list">
-                        {posts.map(({node}) => (
-                            <PostRow post={node} key={node.id} />
+                        {currentPosts.map(({node}) => (
+                            <PostRow post={node} key={node.id}/>
                         ))}
                     </ul>
                 )}
@@ -60,6 +71,25 @@ export default class IndexPage extends React.Component {
                     <p>No posts found!</p>
                 )}
 
+
+                {hasPagination && (
+                    <nav id="post-nav">
+                        {this.state.currentPage > 0 && (
+                            <span className="prev">
+                                <button type='button' title='Previous page' onClick={() => {this.setState({currentPage: this.state.currentPage - 1}); return false;}} style={{cursor: 'hand'}}>
+                                    <span className="arrow">←</span> Newer Posts
+                                </button>
+                            </span>
+                        )}
+                        {currentPosts.length >= this.state.postLimit && (
+                            <span className="next">
+                                <button type='button' title='Previous page' onClick={() => {this.setState({currentPage: this.state.currentPage + 1}); return false;}} style={{cursor: 'hand'}}>
+                                    Older Posts <span className="arrow">→</span>
+                                </button>
+                            </span>
+                        )}
+                    </nav>
+                )}
 
             </PageTemplate>
         );
