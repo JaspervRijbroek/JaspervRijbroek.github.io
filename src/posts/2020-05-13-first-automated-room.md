@@ -13,7 +13,7 @@ So the bathroom is now the first room that has been automated,
 the fan that removes the moist from the air now starts when it value goes above a threshold,
 when it goes below it will switch off.
 
-![Bathroom view](./content-images/home-automtion/bathroom.png)
+![Bathroom view](content-images/home-assistant/bathroom.png)
 
 This is actually rather funny to start showering and then all of a sudden the fan will start running.
 
