@@ -11,7 +11,7 @@ export default class IndexPage extends React.Component {
     constructor() {
         super();
 
-        this.state ={
+        this.state = {
             currentPage: 0,
             postLimit: 5
         };
@@ -19,28 +19,43 @@ export default class IndexPage extends React.Component {
 
     updateSearch(query) {
         if (!query) {
-            this.setState({
+            return this.setState({
                 searchResults: false
             });
         }
 
-        index.search(query).then(({hits}) => {
-            this.setState({
-                currentPage: 0,
-                searchResults: hits.map((item) => {
-                    item.id = item.objectID;
+        index
+            .search(query)
+            .then(({hits}) => {
+                this.setState({
+                    currentPage: 0,
+                    searchResults: hits
+                        .sort((a, b) => {
+                            let aTime = (new Date(a.fields.date)).getTime(),
+                                bTime = (new Date(b.fields.date)).getTime();
 
-                    return {
-                        node: item
-                    }
-                })
-            });
-        })
+                            if (aTime === bTime) {
+                                return 0;
+                            }
+
+                            return aTime > bTime ? -1 : 1;
+                        })
+                        .map((item) => {
+                            item.id = item.objectID;
+
+                            return {
+                                node: item
+                            }
+                        })
+                });
+            })
     }
 
     getPosts() {
         // If there is no search query, we will show the normal posts.
         // Else a filter will be done.
+        console.log(this.state, this.state.searchResults, this.state && this.state.searchResults)
+
         if (this.state && this.state.searchResults) {
             return this.state.searchResults;
         }
@@ -77,14 +92,20 @@ export default class IndexPage extends React.Component {
                     <nav id="post-nav">
                         {this.state.currentPage > 0 && (
                             <span className="prev">
-                                <button type='button' title='Previous page' onClick={() => {this.setState({currentPage: this.state.currentPage - 1}); return false;}} style={{cursor: 'hand'}}>
+                                <button type='button' title='Previous page' onClick={() => {
+                                    this.setState({currentPage: this.state.currentPage - 1});
+                                    return false;
+                                }} style={{cursor: 'hand'}}>
                                     <span className="arrow">←</span> Newer Posts
                                 </button>
                             </span>
                         )}
                         {currentPosts.length >= this.state.postLimit && (
                             <span className="next">
-                                <button type='button' title='Previous page' onClick={() => {this.setState({currentPage: this.state.currentPage + 1}); return false;}} style={{cursor: 'hand'}}>
+                                <button type='button' title='Previous page' onClick={() => {
+                                    this.setState({currentPage: this.state.currentPage + 1});
+                                    return false;
+                                }} style={{cursor: 'hand'}}>
                                     Older Posts <span className="arrow">→</span>
                                 </button>
                             </span>
