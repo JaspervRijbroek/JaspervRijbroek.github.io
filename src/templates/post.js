@@ -41,18 +41,19 @@ const BlogTemplate = ({data}) => {
             </footer>
 
             {data && data.allMarkdownRemark && data.allMarkdownRemark.nodes && data.allMarkdownRemark.nodes.length > 0 && (
-                <ul id="post-list" className="archive readmore">
+                <div>
                     <h3>More like this</h3>
-
-                    {data.allMarkdownRemark.nodes.map((node) => (
-                        <li key={node.id}>
-                            <Link to={node.fields.path}>
-                                {node.frontmatter.title}
-                                <aside className="dates">{node.fields.date}</aside>
-                            </Link>
-                        </li>
-                    ))}
-                </ul>
+                    <ul id="post-list" className="archive readmore">
+                        {data.allMarkdownRemark.nodes.map((node) => (
+                            <li key={node.id}>
+                                <Link to={node.fields.path}>
+                                    {node.frontmatter.title}
+                                    <aside className="dates">{node.fields.date}</aside>
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             )}
 
         </DefaultTemplate>
