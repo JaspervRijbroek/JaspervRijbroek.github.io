@@ -82,7 +82,7 @@ module.exports = {
                 background_color: "#FFF",
                 theme_color: "#FFF",
                 display: "standalone",
-                icon: "src/assets/images/avatar.jpg", // This path is relative to the root of the site.
+                icon: "src/assets/images/favicon.jpg", // This path is relative to the root of the site.
                 crossOrigin: `use-credentials`,
             },
         },
