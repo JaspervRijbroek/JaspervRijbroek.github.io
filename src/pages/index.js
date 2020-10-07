@@ -3,6 +3,7 @@ import {graphql} from "gatsby";
 import PageTemplate from "../templates/page";
 import algoliasearch from 'algoliasearch';
 import PostRow from "../components/post-row";
+import {Helmet} from "react-helmet";
 
 const client = algoliasearch('IMR7H3NXXW', 'c559f11f4c0ecb1bf2540a712cda78d5');
 const index = client.initIndex('Posts');
@@ -54,8 +55,6 @@ export default class IndexPage extends React.Component {
     getPosts() {
         // If there is no search query, we will show the normal posts.
         // Else a filter will be done.
-        console.log(this.state, this.state.searchResults, this.state && this.state.searchResults)
-
         if (this.state && this.state.searchResults) {
             return this.state.searchResults;
         }
@@ -70,7 +69,6 @@ export default class IndexPage extends React.Component {
 
         return (
             <PageTemplate isHome={true}>
-
                 <div className="search">
                     <input type="text" placeholder="Search" onKeyUp={(event) => this.updateSearch(event.target.value)}/>
                 </div>

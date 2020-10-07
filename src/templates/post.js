@@ -2,12 +2,15 @@ import React from "react"
 import DefaultTemplate from "./default";
 import {graphql, Link} from "gatsby";
 import {Profile} from "../components/profile";
+import { Helmet } from "react-helmet"
 
 const BlogTemplate = ({data}) => {
-    console.log(data.markdownRemark.frontmatter.topics);
-
     return (
         <DefaultTemplate>
+            <Helmet>
+                <title>{data.markdownRemark.frontmatter.title} | Jvar</title>
+            </Helmet>
+
             <article className="post">
                 <header>
                     <h1>
@@ -21,8 +24,8 @@ const BlogTemplate = ({data}) => {
                             <span className="topics">
                                 <span> in </span>
 
-                                {data.markdownRemark.frontmatter.topics.map((topic) => (
-                                    <Link to={`/topic/${topic}`}>
+                                {data.markdownRemark.frontmatter.topics.map((topic, index) => (
+                                    <Link to={`/topic/${topic}`} key={index}>
                                         {topic}
                                     </Link>
                                 ))}
