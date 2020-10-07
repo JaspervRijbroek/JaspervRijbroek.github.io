@@ -28,7 +28,7 @@ export const Profile = ({isFooter = false}) => {
             <div className="profile">
                 <section id="wrapper">
                     <header id="header">
-                        <Link to='/about'>
+                        <Link to='/about' title='About'>
                             <span id="avatar">
                                 <Img fluid={data.placeholderImage.childImageSharp.fluid}/>
                             </span>
