@@ -73,6 +73,19 @@ module.exports = {
                 }
             }
         },
+        {
+            resolve: `gatsby-plugin-manifest`,
+            options: {
+                name: "Jvar",
+                short_name: "Jvar",
+                start_url: "/",
+                background_color: "#FFF",
+                theme_color: "#FFF",
+                display: "standalone",
+                icon: "src/assets/images/avatar.jpg", // This path is relative to the root of the site.
+                crossOrigin: `use-credentials`,
+            },
+        },
         `gatsby-plugin-sitemap`,
         `gatsby-plugin-offline`,
         `gatsby-plugin-sass`,
