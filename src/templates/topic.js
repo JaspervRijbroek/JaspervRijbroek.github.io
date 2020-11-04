@@ -1,12 +1,13 @@
 import React from "react"
 import DefaultTemplate from "./default";
 import {graphql} from "gatsby";
-import {Profile} from "../components/profile";
-import PostRow from "../components/post-row";
+import {Profile} from "../components/profile/index";
 import {Helmet} from "react-helmet";
+import PostList from "../components/post/list";
 
 function capitalize(topic) {
     return topic
+        .title
         .split(' ')
         .map(function(part) {
             return part.charAt(0).toUpperCase() + part.slice(1);
@@ -14,26 +15,29 @@ function capitalize(topic) {
         .join(' ');
 }
 
-const TopicTemplate = ({data, pageContext}) => {
+const TopicTemplate = ({data}) => {
     return (
         <DefaultTemplate>
             <Helmet>
-                <title>{capitalize(pageContext.topic)} | Jvar</title>
+                <title>{capitalize(data.contentfulTopic)} | Jvar</title>
             </Helmet>
 
             <div className="topic post">
                 <header id="header">
-                    <h1>{pageContext.topic}</h1>
+                    <h1>{capitalize(data.contentfulTopic)}</h1>
+
+                    {data.contentfulTopic.body && data.contentfulTopic.body.childMarkdownRemark.html && (<h2 className="headline" dangerouslySetInnerHTML={{__html: data.contentfulTopic.body.childMarkdownRemark.html.replace(/(<([^>]+)>)/gi, "")}} />)}
                 </header>
             </div>
 
-            {data && data.allMarkdownRemark && data.allMarkdownRemark.nodes && data.allMarkdownRemark.nodes.length && (
-                <ul id="post-list">
-                    {data.allMarkdownRemark.nodes.map((node) => (
-                        <PostRow key={node.id} post={node} />
-                    ))}
-                </ul>
+            {data && data.allContentfulPost && data.allContentfulPost.nodes && data.allContentfulPost.nodes.length > 0 && (
+                <PostList posts={data.allContentfulPost.nodes} />
             )}
+
+            {data && data.allContentfulPost && data.allContentfulPost.nodes && !data.allContentfulPost.nodes.length && (
+                <p>No posts found!</p>
+            )}
+
             <footer id="post-meta" className="clearfix">
                 <Profile isFooter={true}/>
             </footer>
@@ -42,18 +46,28 @@ const TopicTemplate = ({data, pageContext}) => {
 };
 
 export const pageQuery = graphql`
-  query($topic: String!) {
-    allMarkdownRemark(filter: {frontmatter: {topics: {eq: $topic}}}) {
+  query($topicID: String!) {
+    contentfulTopic(id: {eq: $topicID}) {
+        title
+        slug
+        body {
+          childMarkdownRemark {
+            html
+          }
+        }
+    }
+    allContentfulPost(filter: {topics: {elemMatch: {id: {eq: $topicID}}}}) {
         nodes {
           id
+          title
+          createdOn,
           fields {
-            date(formatString: "MMMM DD, YYYY")
             path
           }
-          frontmatter {
-            title
-            description
-            topics
+          standfirst {
+            childMarkdownRemark {
+              html
+            }
           }
         }
       }

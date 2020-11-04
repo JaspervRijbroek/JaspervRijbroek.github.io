@@ -7,7 +7,7 @@ function getPageTitle(isHome, context) {
         return 'Home';
     }
 
-    return context.frontmatter.title;
+    return context.page.node.title;
 }
 
 const PageTemplate = ({children, isHome, pageContext}) => {
@@ -18,6 +18,8 @@ const PageTemplate = ({children, isHome, pageContext}) => {
             </Helmet>
 
             {children}
+
+            {!children && (<section className="post__body" dangerouslySetInnerHTML={{__html: pageContext.page.node.body.childMarkdownRemark.html}}/>)}
         </DefaultTemplate>
     )
 };

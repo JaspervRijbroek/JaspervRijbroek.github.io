@@ -1,58 +1,44 @@
 import React from "react"
 import DefaultTemplate from "./default";
 import {graphql, Link} from "gatsby";
-import {Profile} from "../components/profile";
 import { Helmet } from "react-helmet"
+import {Profile} from "../components/profile/index";
+import TopicList from "../components/topic/list";
+import PostList from "../components/post/list";
 
 const BlogTemplate = ({data}) => {
     return (
         <DefaultTemplate>
             <Helmet>
-                <title>{data.markdownRemark.frontmatter.title} | Jvar</title>
+                <title>{data.contentfulPost.title} | Jvar</title>
             </Helmet>
 
             <article className="post">
                 <header>
                     <h1>
-                        {data.markdownRemark.frontmatter.title}
+                        {data.contentfulPost.title}
                     </h1>
 
                     <h2 className="headline">
-                        <span>On </span>{data.markdownRemark.fields.date}
+                        <span>On </span>{data.contentfulPost.createdOn}
 
-                        {data.markdownRemark.frontmatter && data.markdownRemark.frontmatter.topics && data.markdownRemark.frontmatter.topics.length && (
-                            <span className="topics">
-                                <span> in </span>
-
-                                {data.markdownRemark.frontmatter.topics.map((topic, index) => (
-                                    <Link to={`/topic/${topic}`} key={index}>
-                                        {topic}
-                                    </Link>
-                                ))}
-                            </span>
+                        {data && data.contentfulPost && data.contentfulPost.topics && data.contentfulPost.topics.length && (
+                            <TopicList topics={data.contentfulPost.topics} />
                         )}
                     </h2>
                 </header>
-                <section id="post-body" dangerouslySetInnerHTML={{__html: data.markdownRemark.html}}/>
+
+                {data && data.contentfulPost && data.contentfulPost.standfirst && (<h2 className="headline" dangerouslySetInnerHTML={{__html: data.contentfulPost.standfirst.childMarkdownRemark.html}}/>)}
+                <section className="post__body" dangerouslySetInnerHTML={{__html: data.contentfulPost.body.childMarkdownRemark.html}}/>
             </article>
 
-            <footer id="post-meta" className="clearfix">
-                <Profile isFooter={true}/>
-            </footer>
+            <Profile isFooter={true}/>
 
             {data && data.allMarkdownRemark && data.allMarkdownRemark.nodes && data.allMarkdownRemark.nodes.length > 0 && (
                 <div>
                     <h3>More like this</h3>
-                    <ul id="post-list" className="archive readmore">
-                        {data.allMarkdownRemark.nodes.map((node) => (
-                            <li key={node.id}>
-                                <Link to={node.fields.path}>
-                                    {node.frontmatter.title}
-                                    <aside className="dates">{node.fields.date}</aside>
-                                </Link>
-                            </li>
-                        ))}
-                    </ul>
+
+                    <PostList posts={data.allMarkdownRemark.nodes} isArchive={true} />
                 </div>
             )}
 
@@ -61,30 +47,25 @@ const BlogTemplate = ({data}) => {
 };
 
 export const pageQuery = graphql`
-  query($path: String!, $topics: [String]!, $id: String!) {
-    markdownRemark(fields: { path: { eq: $path } }) {
-      html
-      fields {
-        date(formatString: "MMMM DD, YYYY")
-        path
+  query($id: String!) {
+    contentfulPost(id: { eq: $id }) {
+      title
+      standfirst {
+        childMarkdownRemark {
+          html
+        }
       }
-      frontmatter {
+      body {
+        childMarkdownRemark {
+          html
+        }
+      }
+      createdOn(formatString: "MMMM DD, YYYY")
+      topics {
+        id
         title
-        description
-        topics
+        slug
       }
-    }
-    allMarkdownRemark(filter: {frontmatter: {topics: {in: $topics}}, id: {ne: $id}}, sort: {fields: fields___date, order: DESC}) {
-        nodes {
-            id
-            fields {
-                date(formatString: "MMMM DD, YYYY")
-                path
-            }
-            frontmatter {
-                title
-            }
-         }
     }
   }
 `;

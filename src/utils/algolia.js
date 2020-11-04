@@ -1,18 +1,22 @@
 const postQuery = `query {
-  posts: allMarkdownRemark(
-    filter: { fileAbsolutePath: { regex: "/posts/" } }
-  ) {
+  posts: allContentfulPost {
     edges {
       node {
         objectID: id
-        html
-        fields {
-          date(formatString: "MMM D, YYYY"),
-          path
+        title
+        createdOn(formatString: "MMM D, YYYY")
+        standfirst {
+          childMarkdownRemark {
+            html
+          }
         }
-        frontmatter {
-          title
-          description
+        body {
+          childMarkdownRemark {
+            html
+          }
+        }
+        fields {
+          path
         }
       }
     }
@@ -27,7 +31,7 @@ const queries = [
     {
         query: postQuery,
         transformer: ({data}) => flatten(data.posts.edges),
-        indexName: `Posts`,
+        indexName: `${process.env.ALGOLIA_INDEX_NAME}Posts`,
         settings,
     },
 ];

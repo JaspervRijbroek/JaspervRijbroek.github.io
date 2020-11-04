@@ -1,0 +1,65 @@
+.list-row {
+  list-style-type: none;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  & + .list-row {
+    padding-top: 20px;
+    border-top: 1px solid $gray-200;
+  }
+
+  h2 {
+    font: normal 17px/1.5em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: $gray-500;
+    max-width: 400px;
+    margin-top: 2px;
+  }
+
+  a {
+    color: $gray-700;
+    display: block;
+    font: bold 19px/1.7 "Helvetica Neue", helvetica, Arial, sans-serif;
+  }
+
+  .dates {
+    display: none;
+    float: right;
+    position: relative;
+    top: 1px;
+    font: 300 17px/1.8 "Helvetica Neue", helvetica, Arial, sans-serif;
+    color: $gray-400;
+  }
+
+  &.archive {
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      display: block;
+      font: bold 17px/1.7 "Helvetica Neue", helvetica, Arial, sans-serif;
+      color: $gray-700;
+    }
+
+    .dates {
+      float: right;
+      position: relative;
+      top: 1px;
+      font: 300 17px/1.7 "Helvetica Neue", helvetica, Arial, sans-serif;
+      color: $gray-400;
+    }
+
+    a:hover,
+    &:hover {
+      .dates {
+        color: $blue-400;
+      }
+    }
+  }
+}
+
+@include bp('small') {
+
+}

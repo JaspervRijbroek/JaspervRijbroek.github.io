@@ -2,11 +2,12 @@ import React from "react"
 import {graphql} from "gatsby";
 import PageTemplate from "../templates/page";
 import algoliasearch from 'algoliasearch';
-import PostRow from "../components/post-row";
-import {Helmet} from "react-helmet";
+import PostRow from "../components/post/row";
+import SearchBar from "../components/search/bar";
+import PostList from "../components/post/list";
 
 const client = algoliasearch('IMR7H3NXXW', 'c559f11f4c0ecb1bf2540a712cda78d5');
-const index = client.initIndex('Posts');
+const index = client.initIndex('DEV_Posts');
 
 export default class IndexPage extends React.Component {
     constructor() {
@@ -59,7 +60,7 @@ export default class IndexPage extends React.Component {
             return this.state.searchResults;
         }
 
-        return this.props.data.allMarkdownRemark.edges
+        return this.props.data.allContentfulPost.edges
     }
 
     render() {
@@ -69,22 +70,15 @@ export default class IndexPage extends React.Component {
 
         return (
             <PageTemplate isHome={true}>
-                <div className="search">
-                    <input type="text" placeholder="Search" onKeyUp={(event) => this.updateSearch(event.target.value)}/>
-                </div>
+                <SearchBar onKeyUp={(event) => this.updateSearch(event.target.value)} />
 
                 {posts && posts.length > 0 && (
-                    <ul id="post-list">
-                        {currentPosts.map(({node}) => (
-                            <PostRow post={node} key={node.id}/>
-                        ))}
-                    </ul>
+                    <PostList posts={currentPosts} />
                 )}
 
                 {(!posts || !posts.length) && (
                     <p>No posts found!</p>
                 )}
-
 
                 {hasPagination && (
                     <nav id="post-nav">
@@ -118,19 +112,24 @@ export default class IndexPage extends React.Component {
 
 export const IndexPageQuery = graphql`
     query {
-      allMarkdownRemark(
-        sort: { order: DESC, fields: [fields___date] }
-      ) {
+      allContentfulPost(sort: {fields: createdOn, order: DESC}) {
         edges {
           node {
-            id,
+            id
+            title
+            slug
             fields {
-              path,
-              date(formatString: "MMMM DD, YYYY")
-            },
-            frontmatter {
-              title,
-              description
+                path
+            }
+            standfirst {
+              childMarkdownRemark {
+                html
+              }
+            }
+            body {
+              childMarkdownRemark {
+                html
+              }
             }
           }
         }

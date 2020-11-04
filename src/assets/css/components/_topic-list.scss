@@ -1,0 +1,15 @@
+.topics {
+  &__list {
+    & + .topics__list {
+      &::before {
+        content: ", ";
+      }
+
+      &:last-of-type {
+        &::before {
+          content: " and ";
+        }
+      }
+    }
+  }
+}

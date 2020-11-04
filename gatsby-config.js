@@ -23,13 +23,6 @@ module.exports = {
                 path: `${__dirname}/src/assets/images`,
             },
         },
-        {
-            resolve: `gatsby-source-filesystem`,
-            options: {
-                path: `${__dirname}/src/posts`,
-                name: `posts`,
-            },
-        },
         `gatsby-plugin-sharp`,
         `gatsby-transformer-sharp`,
         {
@@ -37,14 +30,17 @@ module.exports = {
             options: {
                 plugins: [
                     `gatsby-remark-reading-time`,
-                    {
-                        resolve: `gatsby-remark-images`,
-                        options: {
-                            withWebp: true
-                        }
-                    }
+                    `gatsby-remark-images-contentful`
                 ]
             }
+        },
+        {
+            resolve: `gatsby-source-contentful`,
+            options: {
+                spaceId: process.env.CONTENTFUL_SPACE_ID,
+                accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+                host: `preview.contentful.com`
+            },
         },
         {
             resolve: `gatsby-plugin-google-analytics`,
@@ -63,15 +59,6 @@ module.exports = {
                 queries,
                 chunkSize: 10000, // default: 1000
             },
-        },
-        {
-            resolve: `gatsby-plugin-mdx`,
-            options: {
-                extensions: ['.mdx', '.md'],
-                defaultLayouts: {
-                    default: require.resolve("./src/templates/page.js"),
-                }
-            }
         },
         {
             resolve: `gatsby-plugin-manifest`,

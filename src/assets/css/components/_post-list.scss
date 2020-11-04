@@ -1,0 +1,54 @@
+.post-list {
+  margin-top: 0;
+
+  &-footer {
+    border-top: 1px solid $gray-200;
+    margin-top: 20px;
+    padding-top: 40px
+  }
+
+  &.archive {
+    margin-top: 0;
+
+    &.readmore {
+      h3 {
+        font: 400 20px "Helvetica Neue", Helvetica, Arial, sans-serif;
+        margin-bottom: 30px;
+      }
+
+      a {
+        font: 400 16px/1.6 "Helvetica Neue", helvetica, Arial, sans-serif;
+        color: $blue-400;
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+
+      .dates {
+        font: 300 16px/1.6 "Helvetica Neue", helvetica, Arial, sans-serif;
+      }
+    }
+  }
+}
+
+@include bp('small') {
+  .post-list {
+    margin-top: 100px;
+
+    .dates {
+      display: block;
+    }
+
+    &-footer {
+      margin-top: 20px;
+      padding-top: 100px;
+    }
+
+    &.archive {
+      li {
+        list-style-type: none;
+      }
+    }
+  }
+}

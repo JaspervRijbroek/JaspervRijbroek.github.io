@@ -1,0 +1,41 @@
+.post {
+  margin: 40px 0;
+
+  header {
+    text-align: center;
+  }
+
+  h1 {
+    margin-bottom: 20px;
+    color: $gray-800;
+    font: 300 32px/1.4em "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+
+  h2 {
+    margin-bottom: 40px;
+    font: 300 24px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: $gray-800;
+
+    &.headline {
+      font: normal 13px/1.5em "Helvetica Neue", Helvetica, Arial, sans-serif;
+      margin: -5px 0 40px 0;
+      color: $broken-500;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      display: inline-block;
+    }
+  }
+
+  &__body {
+    h2 {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+@include bp('small') {
+  .post {
+    margin: 40px 0;
+  }
+}

@@ -1,27 +1,13 @@
 const path = require('path');
 
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
-
-// You can delete this file if you're not using it
 exports.onCreateNode = ({node, actions}) => {
     const {createNodeField} = actions;
 
-    if (node.internal.type === `MarkdownRemark`) {
-        let parts = path.parse(node.fileAbsolutePath),
-            filename = parts.name;
+    if (node.internal.type === `ContentfulPost`) {
+        const [, year] = node.createdOn.match(/^([\d]{4})/);
 
-        // get the date and title from the file name
-        const [, date, title] = filename.match(
-            /^([\d]{4}-[\d]{2}-[\d]{2})-(.+)$/
-        );
-        const [, year] = date.match(/^([\d]{4})/);
-
-        createNodeField({node, name: `path`, value: `/${year}/${title}`});
-        createNodeField({node, name: `date`, value: date});
+        createNodeField({node, name: `path`, value: `/${year}/${node.slug}`});
+        createNodeField({node, name: `date`, value: node.createdOn});
         createNodeField({node, name: `year`, value: year});
     }
 };
@@ -30,18 +16,15 @@ exports.createPages = async ({actions, graphql, reporter}) => {
     const {createPage} = actions,
         postTemplate = path.resolve(`src/templates/post.js`),
         topicTemplate = path.resolve('src/templates/topic.js'),
+        pageTemplate = path.resolve('src/templates/page.js'),
         postResult = await graphql(`{
-              allMarkdownRemark(
-                sort: { order: DESC, fields: [fields___date] }
-              ) {
+              allContentfulPost {
                 edges {
                   node {
                     id
+                    createdOn
                     fields {
                       path
-                    }
-                    frontmatter {
-                        topics
                     }
                   }
                 }
@@ -49,44 +32,81 @@ exports.createPages = async ({actions, graphql, reporter}) => {
             }
           `),
         topicResults = await graphql(`{
-            allMarkdownRemark {
+            allContentfulTopic {
                 edges {
                     node {
-                        frontmatter {
-                            topics
+                        id
+                        title
+                        slug
+                    }
+                }
+            }
+        }`),
+        pagesResults = await graphql(`{
+            allContentfulPage {
+                edges {
+                    node {
+                        title
+                        slug,
+                        body {
+                            childMarkdownRemark {
+                                html
+                            }
                         }
                     }
                 }
             }
         }`);
-    // Handle errors
-    if (postResult.errors || topicResults.errors) {
+
+    if (postResult.errors || topicResults.errors || pagesResults.errors) {
         reporter.panicOnBuild(`Error while running GraphQL query.`)
         return
     }
 
     // Create pages for the blog pages.
-    postResult.data.allMarkdownRemark.edges.forEach(({node}) => {
-        createPage({
-            path: node.fields.path,
-            component: postTemplate,
-            context: {
-                id: node.id,
-                topics: node.frontmatter.topics
-            }
-        })
-    });
+    postResult
+        .data
+        .allContentfulPost
+        .edges
+        .forEach(({node}) => {
+            console.log(node.fields);
+
+            createPage({
+                path: node.fields.path,
+                component: postTemplate,
+                context: {
+                    id: node.id
+                }
+            })
+        });
 
     // Create the topic pages
-    topicResults.data.allMarkdownRemark.edges.reduce(function(carry, {node}) {
-        return carry.concat(node.frontmatter.topics);
-    }, []).filter((item, index, self) => self.indexOf(item) === index).forEach(topic => {
-        createPage({
-            path: `/topic/${topic}`,
-            component: topicTemplate,
-            context: {
-                topic
-            }
+    topicResults
+        .data
+        .allContentfulTopic
+        .edges
+        .forEach(topic => {
+            createPage({
+                path: `/topic/${topic.node.slug}`,
+                component: topicTemplate,
+                context: {
+                    topicID: topic.node.id
+                }
+            })
         })
-    })
+
+    // Create the custom pages
+    pagesResults
+        .data
+        .allContentfulPage
+        .edges
+        .forEach(page => {
+            createPage({
+                path: `/${page.node.slug}`,
+                component: pageTemplate,
+                context: {
+                    page
+                }
+            })
+        })
 };

@@ -1,6 +1,8 @@
 version: "3"
 services:
   node:
+    env_file:
+      - "./.dev/.env"
     image: "node:12"
     container_name: "jvar-gatsby"
     working_dir: "/app"
