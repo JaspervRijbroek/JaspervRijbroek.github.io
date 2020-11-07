@@ -1,26 +1,13 @@
 .nav {
   &__main {
-    padding: 20px 20px 0;
-    background: $broken-100;
-    background: rgba(255, 255, 255, .90);
-    margin: 0 auto;
-    text-align: right;
-    z-index: 100;
+    @apply m-0 p-4 text-right;
   }
 
-  .nav__link {
-    top: 8px;
-    right: 6px;
-    padding: 8px 12px;
-    color: $blue-400;
-    font-size: 13px;
-    line-height: 1.35;
-    border-radius: 3px;
+  &__link {
+    @apply text-blue-500 text-base p-2 text-sm;
 
-    &.cta {
-      background: $blue-400;
-      color: $broken-100;
-      margin-left: 12px;
+    .arrow {
+      @apply relative top-0;
     }
   }
 }

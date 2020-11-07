@@ -2,15 +2,6 @@ import React from "react"
 import {Link} from "gatsby";
 
 export default class TopicList extends React.Component {
-    getTopicName(topic) {
-        return topic
-            .split(' ')
-            .map(function (part) {
-                return part.charAt(0).toUpperCase() + part.slice(1);
-            })
-            .join(' ')
-    }
-
     render(args) {
         return (
             <span className="topics">

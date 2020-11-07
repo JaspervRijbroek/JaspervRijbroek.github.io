@@ -12,7 +12,13 @@ export default {
     },
     component: TopicList,
     args: {
-        topics: ['foo', 'bar', 'baz']
+        topics: [{
+            title: 'foo'
+        }, {
+            title: 'bar'
+        }, {
+            title: 'baz'
+        }]
     },
 };
 

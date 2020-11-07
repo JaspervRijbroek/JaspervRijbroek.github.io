@@ -1,8 +1,8 @@
+const path = require('path');
+
 module.exports = {
     "stories": [
-        "../src/**/stories/*.@(js|jsx)",
-        "../src/**/*.stories.mdx",
-        "../src/**/*.stories.@(js|jsx|ts|tsx)"
+        "../src/**/stories/*.@(js|jsx)"
     ],
     "addons": [
         "@storybook/addon-links",
@@ -25,29 +25,22 @@ module.exports = {
             require.resolve("@babel/plugin-proposal-class-properties"),
             // use babel-plugin-remove-graphql-queries to remove static queries from components when rendering in storybook
             require.resolve("babel-plugin-remove-graphql-queries"),
-        ]
+        ];
 
-        config.module.rules.unshift({
-            test: /\.module\.(c|sc)ss$/,
+        config.module.rules.push({
+            test: /\.scss$/,
             use: [
-                require.resolve('style-loader'),
-                {
-                    loader: require.resolve('css-loader'),
-                    options: {
-                        importLoaders: 1,
-                        modules: true,
-                        camelCase: true,
-                        localIdentName: '[name]__[local]___[hash:base64:5]',
-                    },
-                },
-                require.resolve('sass-loader'),
-            ]
-        });
+                // Loader for webpack to process CSS with PostCSS
+                'style-loader',
+                'css-loader',
+                'postcss-loader',
+                'sass-loader',
+            ],
+            include: [path.resolve(__dirname, '..')]
+        })
 
         // Prefer Gatsby ES6 entrypoint (module) over commonjs (main) entrypoint
         config.resolve.mainFields = ["browser", "module", "main"];
-
-        console.log(config.module.rules);
 
         return config;
     }

@@ -6,25 +6,47 @@ export default {
     component: BlogTemplate,
     args: {
         data: {
-            markdownRemark: {
-                frontmatter: {
-                    title: 'Hello World',
-                    topics: ['foo', 'bar', 'baz']
+            contentfulPost: {
+                topics: [{
+                    title: 'foo'
+                }, {
+                    title: 'bar'
+                }, {
+                    title: 'baz'
+                }],
+                title: 'Hello World',
+                body: {
+                    childMarkdownRemark: {
+                        html: '<h2>This is the first blog post of this demo</h2><p>This is my first blog page, welcome!</p>'
+                    }
                 },
+                createdOn: 'July 31, 2020',
                 fields: {
                     date: 'July 31, 2020'
-                },
-                html: '<p>This is my first blog page, welcome!</p>'
+                }
             },
             allMarkdownRemark: {
                 nodes: [{
-                    frontmatter: {
-                        title: 'Test 1',
-                        description: 'Foo Bar!'
+                    standfirst: {
+                        childMarkdownRemark: {
+                            html: 'The first blog'
+                        }
                     },
+                    title: 'Hello world',
+                    date: 'July 31, 2020',
                     fields: {
                         path: '/',
-                        date: 'July 31, 2020',
+                    }
+                }, {
+                    standfirst: {
+                        childMarkdownRemark: {
+                            html: 'The last blog'
+                        }
+                    },
+                    title: 'Bye world',
+                    date: 'July 31, 2020',
+                    fields: {
+                        path: '/',
                     }
                 }]
             }

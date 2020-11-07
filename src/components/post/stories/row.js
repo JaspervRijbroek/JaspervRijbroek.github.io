@@ -8,13 +8,15 @@ export default {
         isArchive: { control: 'boolean' },
     },
     args: {
-        frontmatter: {
-            title: 'Hello world',
-            description: 'This is the first demo'
+        standfirst: {
+            childMarkdownRemark: {
+                html: 'The first blog'
+            }
         },
+        title: 'Hello world',
+        date: 'July 31, 2020',
         fields: {
             path: '/',
-            date: 'July 31, 2020'
         }
     },
 };

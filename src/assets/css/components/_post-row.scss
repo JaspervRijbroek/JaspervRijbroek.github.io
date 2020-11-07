@@ -1,65 +1,44 @@
 .list-row {
   list-style-type: none;
+  @apply pb-8;
 
   &:last-of-type {
-    margin-bottom: 0;
+    @apply pb-0;
   }
 
   & + .list-row {
-    padding-top: 20px;
-    border-top: 1px solid $gray-200;
+    @apply pt-8 border-t border-gray-400;
   }
 
   h2 {
-    font: normal 17px/1.5em "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: $gray-500;
-    max-width: 400px;
-    margin-top: 2px;
+    @apply w-2/3 text-gray-500 mt-0 text-base;
   }
 
   a {
-    color: $gray-700;
-    display: block;
-    font: bold 19px/1.7 "Helvetica Neue", helvetica, Arial, sans-serif;
-  }
-
-  .dates {
-    display: none;
-    float: right;
-    position: relative;
-    top: 1px;
-    font: 300 17px/1.8 "Helvetica Neue", helvetica, Arial, sans-serif;
-    color: $gray-400;
-  }
-
-  &.archive {
-    &:last-child {
-      margin-bottom: 0;
-    }
-
-    a {
-      display: block;
-      font: bold 17px/1.7 "Helvetica Neue", helvetica, Arial, sans-serif;
-      color: $gray-700;
-    }
+    @apply text-gray-700 block font-bold text-lg;
 
     .dates {
-      float: right;
-      position: relative;
-      top: 1px;
-      font: 300 17px/1.7 "Helvetica Neue", helvetica, Arial, sans-serif;
-      color: $gray-400;
+      @apply text-gray-500 text-base font-light float-right transition-all duration-300;
     }
 
-    a:hover,
     &:hover {
+      @apply border-opacity-0 text-blue-500;
+
       .dates {
-        color: $blue-400;
+        @apply text-blue-500;
       }
     }
   }
-}
 
-@include bp('small') {
+  &.archive {
+    @apply py-4;
 
+    a {
+      @apply text-base;
+    }
+
+    &:last-of-type {
+      @apply pb-0;
+    }
+  }
 }

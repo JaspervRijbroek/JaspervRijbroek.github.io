@@ -7,7 +7,7 @@ import SearchBar from "../components/search/bar";
 import PostList from "../components/post/list";
 
 const client = algoliasearch('IMR7H3NXXW', 'c559f11f4c0ecb1bf2540a712cda78d5');
-const index = client.initIndex('DEV_Posts');
+const index = client.initIndex('Posts');
 
 export default class IndexPage extends React.Component {
     constructor() {

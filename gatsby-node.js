@@ -69,8 +69,6 @@ exports.createPages = async ({actions, graphql, reporter}) => {
         .allContentfulPost
         .edges
         .forEach(({node}) => {
-            console.log(node.fields);
-
             createPage({
                 path: node.fields.path,
                 component: postTemplate,

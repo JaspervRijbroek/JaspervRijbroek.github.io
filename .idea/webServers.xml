@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="44e17b73-a059-4011-8e61-3c79daf52db1" name="[PROD] Hi Genius">
+        <fileTransfer rootFolder="/var/www/html" accessType="SFTP" host="higenius.nl" port="22" sshConfigId="ab5f5864-6d42-42c1-8a2d-bb1a933b88a8" sshConfig="[PROD] higenius" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

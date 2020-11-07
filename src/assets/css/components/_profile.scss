@@ -1,49 +1,39 @@
 .profile {
   &__wrapper {
-    padding: 100px 40px 0;
-    max-width: 600px;
-    margin: 0 auto;
+    @apply pt-20 px-4 mx-auto max-w-screen-sm;
   }
 
   &__header {
-    border-bottom: 1px solid $gray-200;
-    margin-bottom: 40px;
-    padding-bottom: 40px;
-    text-align: center;
-    position: relative;
+    @apply border-b border-gray-400 text-center mb-10 pb-10;
   }
 
   &__avatar {
-    display: inline-block;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    margin-bottom: 20px;
-  }
-
-  &--footer &__avatar {
-    height: 36px;
-    width: 36px;
-    float: left;
-    border-radius: 50%;
-    margin-top: 3px;
-    margin-right: 20px;
-    box-shadow: 0 0 0 3px $broken-100, 0 0 0 4px $gray-200;
+    @apply rounded-full mb-5 w-20 h-20 inline-block;
   }
 
   &__title {
-    font-weight: 400;
-    letter-spacing: 0;
-    font-size: 20px;
-    color: $gray-800;
+    @apply text-xl text-gray-900;
   }
 
   &__slogan {
-    font-size: 20px;
-    font-weight: 300;
-    color: $gray-500;
-    margin-top: 10px;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-style: normal;
+    @apply font-light text-base text-gray-500 mt-1;
+  }
+
+  &--footer {
+    @apply my-8 py-8/* border-t border-b border-gray-400*/;
+
+    .profile__avatar {
+      @apply w-8 h-8 rounded-full mt-1 mr-5 float-left;
+
+      box-shadow: 0 0 0 3px #fff, 0 0 0 4px #eee;
+    }
+
+    .profile__slogan {
+      @apply block text-xs mt-0;
+    }
+
+    .profile__title {
+      @apply block text-sm;
+    }
   }
 }

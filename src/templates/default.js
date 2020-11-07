@@ -4,22 +4,8 @@ import {Profile} from "../components/profile/index";
 import Footer from "../components/footer/index";
 import {Helmet} from "react-helmet";
 import Navigation from "../components/navigation/index";
-import {graphql, useStaticQuery} from "gatsby";
 
 const DefaultTemplate = ({children, isHome = false, isPage = false}) => {
-    let pages = useStaticQuery(graphql`
-        query {
-          allContentfulPage(sort: {fields: title, order: DESC}) {
-            edges {
-              node {
-                title
-                slug
-              }
-            }
-          }
-        }
-      `);
-
     return (
         <div>
             <Helmet>
@@ -29,7 +15,7 @@ const DefaultTemplate = ({children, isHome = false, isPage = false}) => {
                 <meta name="author" content="Jasper van Rijbroek"/>
             </Helmet>
 
-            <Navigation isHome={isHome} pages={pages.allContentfulPage.edges}/>
+            <Navigation isHome={isHome}/>
 
             {isPage && (<Profile/>)}
 

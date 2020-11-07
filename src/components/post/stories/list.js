@@ -5,31 +5,35 @@ export default {
     title: 'Components/Post/List',
     component: PostList,
     argTypes: {
-        isArchive: { control: 'boolean' },
+        isArchive: {control: 'boolean'},
     },
     args: {
         posts: [{
-                frontmatter: {
-                    title: 'Hello world',
-                    description: 'This is the first demo'
-                },
-                fields: {
-                    path: '/',
-                    date: 'July 31, 2020'
+            standfirst: {
+                childMarkdownRemark: {
+                    html: 'The first blog'
                 }
-        }, {
-            frontmatter: {
-                title: 'Hello world2',
-                description: 'This is the second demo'
             },
+            title: 'Hello world',
+            date: 'July 31, 2020',
             fields: {
                 path: '/',
-                date: 'July 31, 2020'
+            }
+        }, {
+            standfirst: {
+                childMarkdownRemark: {
+                    html: 'The last blog'
+                }
+            },
+            title: 'Bye world',
+            date: 'July 31, 2020',
+            fields: {
+                path: '/',
             }
         }]
     }
 };
 
-export const Default = (args) => <PostList posts={args.posts} isArchive={args.isArchive} />;
+export const Default = (args) => <PostList posts={args.posts} isArchive={args.isArchive}/>;
 
-export const Archived = (args) => <PostList posts={args.posts} isArchive />;
+export const Archived = (args) => <PostList posts={args.posts} isArchive/>;

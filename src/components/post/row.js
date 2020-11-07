@@ -5,7 +5,7 @@ const PostRow = ({post, isArchive = false}) => {
     post = post.node || post;
 
     return (
-    <li className="list-row">
+    <li className={"list-row" + (isArchive ? ' archive' : '')}>
         <Link title={[post.title]} to={post.fields.path}>
             <aside className="dates">{post.date}</aside>
 

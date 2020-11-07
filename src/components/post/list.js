@@ -1,13 +1,16 @@
 import React from "react"
 import PostRow from "./row";
-import cn from 'classnames';
 
 const PostList = ({posts, isArchive = false}) => (
-    <ul className={cn('post-list', isArchive ? 'archive' : '')}>
-        {posts && posts.map((post, index) => (
-            <PostRow post={post} isArchive={isArchive} key={index} />
-        ))}
-    </ul>
+    <div className={'post-list' + (isArchive ? '--archive' : '')}>
+        {isArchive && (<h3 className="post-list__title">More like this</h3>)}
+
+        <ul>
+            {posts && posts.map((post, index) => (
+                <PostRow post={post} isArchive={isArchive} key={index} />
+            ))}
+        </ul>
+    </div>
 );
 
 export default PostList

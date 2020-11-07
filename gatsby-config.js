@@ -73,9 +73,16 @@ module.exports = {
                 crossOrigin: `use-credentials`,
             },
         },
+        {
+            resolve: `gatsby-plugin-sass`,
+            options: {
+                postCssPlugins: [
+                    require("tailwindcss")(),
+                ],
+            }
+        },
         `gatsby-plugin-sitemap`,
         `gatsby-plugin-offline`,
-        `gatsby-plugin-sass`,
         `gatsby-plugin-react-helmet`
     ],
 };

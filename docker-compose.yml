@@ -3,8 +3,7 @@ services:
   node:
     env_file:
       - "./.dev/.env"
-    image: "node:12"
-    container_name: "jvar-gatsby"
+    image: "library/node:14"
     working_dir: "/app"
     user: "1000:1000"
     volumes:
@@ -13,10 +12,9 @@ services:
       - "8000:8000"
   php:
     image: "php:7.4-cli"
-    container_name: "jvar-php"
     working_dir: "/app"
     user: "1000:1000"
     volumes:
-      - "./public:/app"
+      - "./test:/app"
     ports:
       - "8000:8000"

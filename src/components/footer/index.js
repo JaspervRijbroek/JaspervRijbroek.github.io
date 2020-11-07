@@ -17,7 +17,7 @@ const Footer = () => {
 
     return (
         <footer className="footer">
-            <p className="small">© Copyright {(new Date()).getFullYear()} {data.site.siteMetadata.me.title}</p>
+            <p className="footer__text">© Copyright {(new Date()).getFullYear()} {data.site.siteMetadata.me.title}</p>
         </footer>
     );
 };

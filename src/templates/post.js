@@ -14,12 +14,12 @@ const BlogTemplate = ({data}) => {
             </Helmet>
 
             <article className="post">
-                <header>
+                <header className="post__header">
                     <h1>
                         {data.contentfulPost.title}
                     </h1>
 
-                    <h2 className="headline">
+                    <h2 className="post__headline">
                         <span>On </span>{data.contentfulPost.createdOn}
 
                         {data && data.contentfulPost && data.contentfulPost.topics && data.contentfulPost.topics.length && (
@@ -35,11 +35,7 @@ const BlogTemplate = ({data}) => {
             <Profile isFooter={true}/>
 
             {data && data.allMarkdownRemark && data.allMarkdownRemark.nodes && data.allMarkdownRemark.nodes.length > 0 && (
-                <div>
-                    <h3>More like this</h3>
-
-                    <PostList posts={data.allMarkdownRemark.nodes} isArchive={true} />
-                </div>
+                <PostList posts={data.allMarkdownRemark.nodes} isArchive={true} />
             )}
 
         </DefaultTemplate>
