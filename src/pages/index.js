@@ -4,6 +4,7 @@ import PageTemplate from "../templates/page";
 import algoliasearch from 'algoliasearch';
 import SearchBar from "../components/search/bar";
 import PostList from "../components/post/list";
+import Pagination from "../components/pagination";
 
 const client = algoliasearch('IMR7H3NXXW', 'c559f11f4c0ecb1bf2540a712cda78d5');
 const index = client.initIndex('Posts');
@@ -79,30 +80,7 @@ export default class IndexPage extends React.Component {
                     <p>No posts found!</p>
                 )}
 
-                {hasPagination && (
-                    <nav id="post-nav">
-                        {this.state.currentPage > 0 && (
-                            <span className="prev">
-                                <button type='button' title='Previous page' onClick={() => {
-                                    this.setState({currentPage: this.state.currentPage - 1});
-                                    return false;
-                                }} style={{cursor: 'hand'}}>
-                                    <span className="arrow">←</span> Newer Posts
-                                </button>
-                            </span>
-                        )}
-                        {currentPosts.length >= this.state.postLimit && (
-                            <span className="next">
-                                <button type='button' title='Previous page' onClick={() => {
-                                    this.setState({currentPage: this.state.currentPage + 1});
-                                    return false;
-                                }} style={{cursor: 'hand'}}>
-                                    Older Posts <span className="arrow">→</span>
-                                </button>
-                            </span>
-                        )}
-                    </nav>
-                )}
+                {hasPagination && (<Pagination pages={posts.length / this.state.postLimit} page={this.state.currentPage} setPage={(page) => {this.setState({currentPage: page})}} />)}
 
             </PageTemplate>
         );

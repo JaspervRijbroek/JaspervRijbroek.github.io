@@ -1,54 +1,30 @@
 .pager {
-  //border-top: 1px solid $gray-200;
-  text-align: center;
-  padding-top: 20px;
-  font-size: 13px;
-  font-weight: 500;
-  margin-top: 40px;
+  @apply pt-5 mt-10 text-xs font-bold text-center border-t border-gray-400;
 
   span {
-    -webkit-transition: all 0.1s linear;
-    -moz-transition: all 0.1s linear;
-    -o-transition: all 0.1s linear;
-    transition: all 0.1s linear;
-    position: relative;
+    @apply transition-all duration-100 relative;
 
     &.prev {
-      float: left;
+      @apply float-left;
 
       &:hover {
         left: -3px;
-
-        .arrow {
-          left: -4px;
-        }
       }
     }
 
     &.next {
-      float: right;
+      @apply float-right;
 
       &:hover {
         right: -3px;
-
-        .arrow {
-          right: -4px;
-        }
       }
     }
 
     &.prev,
     &.next {
       button {
-        background: transparent;
-        border: none;
-        //color: $blue-400;
+        @apply text-blue-500 border-0;
       }
-    }
-
-    .arrow {
-      position: relative;
-      padding: 1px;
     }
   }
 }
