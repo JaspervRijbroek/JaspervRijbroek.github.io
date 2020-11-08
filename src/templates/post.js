@@ -1,6 +1,6 @@
 import React from "react"
 import DefaultTemplate from "./default";
-import {graphql, Link} from "gatsby";
+import {graphql} from "gatsby";
 import { Helmet } from "react-helmet"
 import {Profile} from "../components/profile/index";
 import TopicList from "../components/topic/list";

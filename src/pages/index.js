@@ -2,7 +2,6 @@ import React from "react"
 import {graphql} from "gatsby";
 import PageTemplate from "../templates/page";
 import algoliasearch from 'algoliasearch';
-import PostRow from "../components/post/row";
 import SearchBar from "../components/search/bar";
 import PostList from "../components/post/list";
 
@@ -118,7 +117,11 @@ export const IndexPageQuery = graphql`
             id
             title
             slug
-            teaser
+            teaser {
+              childMarkdownRemark {
+                html
+              }
+            }
             fields {
                 path
             }
