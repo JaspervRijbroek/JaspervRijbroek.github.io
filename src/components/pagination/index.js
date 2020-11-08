@@ -17,14 +17,14 @@ export default class Pagination extends React.Component {
                 <nav id="post-nav">
                     {this.props.page > 0 && (
                         <span className="prev">
-                            <button type='button' title='Previous page' onClick={this.previous} style={{cursor: 'hand'}}>
+                            <button type='button' title='Previous page' onClick={this.previous.bind(this)} style={{cursor: 'hand'}}>
                                 <span className="arrow">←</span> Newer Posts
                             </button>
                         </span>
                     )}
                     {this.props && this.props.pages && this.props.pages > this.props.page && (
                         <span className="next">
-                            <button type='button' title='Previous page' onClick={this.next} style={{cursor: 'hand'}}>
+                            <button type='button' title='Previous page' onClick={this.next.bind(this)} style={{cursor: 'hand'}}>
                                 Older Posts <span className="arrow">→</span>
                             </button>
                         </span>
