@@ -18,6 +18,8 @@ jobs:
       env:
         ALGOLIA_APP_ID: ${{ secrets.algolia_app_id }}
         ALGOLIA_ADMIN_KEY: ${{ secrets.algolia_admin_key }}
+        CONTENTFUL_SPACE_ID: ${{ secrets.contentful_space_id }}
+        CONTENTFUL_ACCESS_TOKEN: ${{ secrets.contentful_access_token }}
         GOOGLE_ANALYTICS_KEY: "UA-32550863-6"
       with:
         publishBranch: "master"
