@@ -15,7 +15,7 @@ const BlogTemplate = ({data}) => {
 
             <article className="post">
                 <header className="post__header">
-                    <h1>
+                    <h1 className="post__title">
                         {data.contentfulPost.title}
                     </h1>
 
