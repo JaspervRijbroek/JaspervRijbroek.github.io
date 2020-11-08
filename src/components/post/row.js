@@ -10,7 +10,7 @@ const PostRow = ({post, isArchive = false}) => {
             <aside className="dates">{post.date}</aside>
 
             {post.title}
-            {!isArchive && (<h2>{post.standfirst.childMarkdownRemark.html.replace(/(<([^>]+)>)/gi, "")}</h2>)}
+            {!isArchive && post.teaser && (<h2>{post.teaser}</h2>)}
         </Link>
     </li>
 )};

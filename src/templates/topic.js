@@ -61,13 +61,9 @@ export const pageQuery = graphql`
           id
           title
           createdOn,
+          teaser
           fields {
             path
-          }
-          standfirst {
-            childMarkdownRemark {
-              html
-            }
           }
         }
       }

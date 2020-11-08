@@ -28,7 +28,6 @@ const BlogTemplate = ({data}) => {
                     </h2>
                 </header>
 
-                {data && data.contentfulPost && data.contentfulPost.standfirst && (<h2 className="headline" dangerouslySetInnerHTML={{__html: data.contentfulPost.standfirst.childMarkdownRemark.html}}/>)}
                 <section className="post__body" dangerouslySetInnerHTML={{__html: data.contentfulPost.body.childMarkdownRemark.html}}/>
             </article>
 
@@ -46,11 +45,6 @@ export const pageQuery = graphql`
   query($id: String!) {
     contentfulPost(id: { eq: $id }) {
       title
-      standfirst {
-        childMarkdownRemark {
-          html
-        }
-      }
       body {
         childMarkdownRemark {
           html

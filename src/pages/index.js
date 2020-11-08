@@ -118,13 +118,9 @@ export const IndexPageQuery = graphql`
             id
             title
             slug
+            teaser
             fields {
                 path
-            }
-            standfirst {
-              childMarkdownRemark {
-                html
-              }
             }
             body {
               childMarkdownRemark {
