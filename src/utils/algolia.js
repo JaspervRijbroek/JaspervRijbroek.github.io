@@ -5,6 +5,11 @@ const postQuery = `query {
         objectID: id
         title
         createdOn(formatString: "MMM D, YYYY")
+        teaser {
+          childMarkdownRemark {
+            html
+          }
+        }
         body {
           childMarkdownRemark {
             html
@@ -26,7 +31,7 @@ const queries = [
     {
         query: postQuery,
         transformer: ({data}) => flatten(data.posts.edges),
-        indexName: `${process.env.ALGOLIA_INDEX_NAME}Posts`,
+        indexName: `${process.env.ALGOLIA_INDEX_NAME || ''}Posts`,
         settings,
     },
 ];
