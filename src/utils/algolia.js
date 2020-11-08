@@ -5,11 +5,6 @@ const postQuery = `query {
         objectID: id
         title
         createdOn(formatString: "MMM D, YYYY")
-        standfirst {
-          childMarkdownRemark {
-            html
-          }
-        }
         body {
           childMarkdownRemark {
             html
