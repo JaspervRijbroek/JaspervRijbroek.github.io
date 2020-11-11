@@ -13,10 +13,12 @@ export const Profile = ({isFooter = false}) => {
           }
         }
       },
-      placeholderImage: file(relativePath: { eq: "avatar@2x.jpg" }) {
-        childImageSharp {
-          fluid(maxWidth: 300) {
-            ...GatsbyImageSharpFluid
+      allContentfulAsset(filter: {contentful_id: {eq: "4D7wk8EA9cVB6z2QX5RtIX"}}) {
+        edges {
+          node {
+            fluid(maxWidth: 80, maxHeight: 80) {
+              ...GatsbyContentfulFluid_withWebp
+            }
           }
         }
       }
@@ -29,7 +31,7 @@ export const Profile = ({isFooter = false}) => {
                 <header className="profile__header">
                     <Link to='/about' title='About'>
                         <span>
-                            <Img fluid={data.placeholderImage.childImageSharp.fluid} className="profile__avatar" />
+                            <Img fluid={data.allContentfulAsset.edges[0].node.fluid} className="profile__avatar" />
                         </span>
                     </Link>
 
@@ -44,7 +46,7 @@ export const Profile = ({isFooter = false}) => {
         <footer className="profile profile--footer">
             <Link to='/about'>
                 <span>
-                    <Img className="profile__avatar" fluid={data.placeholderImage.childImageSharp.fluid}/>
+                    <Img className="profile__avatar" fluid={data.allContentfulAsset.edges[0].node.fluid}/>
                 </span>
                 <div className="profile__meta">
                     <span className="profile__title">{data.site.siteMetadata.me.title}</span>

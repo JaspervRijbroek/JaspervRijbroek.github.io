@@ -18,8 +18,8 @@ const Navigation = ({isHome}) => {
     return (<nav className="nav__main">
         {!isHome && (<Link to="/" className="nav__link"> <span className="arrow">←</span> Home </Link>)}
 
-        {pages.allContentfulPage && pages.allContentfulPage.edges && pages.allContentfulPage.edges.length > 0 && pages.allContentfulPage.edges.map(page => (
-            <Link to={`/${page.node.slug}`} className="nav__link">{page.node.title}</Link>
+        {pages.allContentfulPage && pages.allContentfulPage.edges && pages.allContentfulPage.edges.length > 0 && pages.allContentfulPage.edges.map((page, index) => (
+            <Link to={`/${page.node.slug}`} className="nav__link" key={index}>{page.node.title}</Link>
         ))}
     </nav>);
 };
