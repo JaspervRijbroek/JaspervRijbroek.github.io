@@ -22,11 +22,11 @@ const TopicTemplate = ({data}) => {
                 <title>{capitalize(data.contentfulTopic)} | Jvar</title>
             </Helmet>
 
-            <div className="topic post">
-                <header id="header">
-                    <h1>{capitalize(data.contentfulTopic)}</h1>
+            <div className="post">
+                <header className="post__header">
+                    <h1 className="post__title">{capitalize(data.contentfulTopic)}</h1>
 
-                    {data.contentfulTopic.body && data.contentfulTopic.body.childMarkdownRemark.html && (<h2 className="headline" dangerouslySetInnerHTML={{__html: data.contentfulTopic.body.childMarkdownRemark.html.replace(/(<([^>]+)>)/gi, "")}} />)}
+                    {data.contentfulTopic.body && data.contentfulTopic.body.childMarkdownRemark.html && (<h2 className="post__headline" dangerouslySetInnerHTML={{__html: data.contentfulTopic.body.childMarkdownRemark.html.replace(/(<([^>]+)>)/gi, "")}} />)}
                 </header>
             </div>
 
