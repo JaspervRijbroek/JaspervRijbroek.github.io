@@ -4,27 +4,32 @@ import {Profile} from "../components/profile/index";
 import Footer from "../components/footer/index";
 import {Helmet} from "react-helmet";
 import Navigation from "../components/navigation/index";
+import {Provider} from 'react-redux';
+import {store} from '../state';
+import ColorSchemeLayout from "../components/layout";
 
 const DefaultTemplate = ({children, isHome = false, isPage = false}) => {
     return (
-        <div>
-            <Helmet>
-                <html lang="en"/>
-                <meta charSet="utf-8"/>
-                <meta name="description" content="Personal ramblings of a professional developer"/>
-                <meta name="author" content="Jasper van Rijbroek"/>
-            </Helmet>
+        <Provider store={store} className>
+            <ColorSchemeLayout>
+                <Helmet>
+                    <html lang="en"/>
+                    <meta charSet="utf-8"/>
+                    <meta name="description" content="Personal ramblings of a professional developer"/>
+                    <meta name="author" content="Jasper van Rijbroek"/>
+                </Helmet>
 
-            <Navigation isHome={isHome}/>
+                <Navigation isHome={isHome}/>
 
-            {isPage && (<Profile/>)}
+                {isPage && (<Profile/>)}
 
-            <section className={'wrapper' + (isHome ? ' home' : '')}>
-                {children}
+                <section className={'wrapper' + (isHome ? ' home' : '')}>
+                    {children}
 
-                <Footer/>
-            </section>
-        </div>
+                    <Footer/>
+                </section>
+            </ColorSchemeLayout>
+        </Provider>
     )
 };
 

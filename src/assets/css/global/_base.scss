@@ -1,9 +1,17 @@
 body, html {
   font-family: 'Roboto', sans-serif;
+
+  .theme-dark {
+    @apply bg-gray-900;
+  }
+}
+
+* {
+  @apply transition-all duration-150;
 }
 
 .wrapper {
-  @apply mx-auto max-w-screen-sm px-4 mb-8;
+  @apply mx-auto max-w-screen-sm px-4 pb-8;
 }
 
 a {

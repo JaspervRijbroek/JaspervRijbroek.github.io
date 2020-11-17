@@ -13,6 +13,10 @@
 
   &__title {
     @apply text-xl text-gray-900;
+
+    .theme-dark & {
+      @apply text-gray-100;
+    }
   }
 
   &__slogan {
@@ -26,6 +30,10 @@
       @apply w-8 h-8 rounded-full mt-1 mr-5 float-left;
 
       box-shadow: 0 0 0 3px #fff, 0 0 0 4px #eee;
+
+      .theme-dark & {
+        box-shadow: 0 0 0 3px #1a202c, 0 0 0 4px #eee;
+      }
     }
 
     .profile__slogan {

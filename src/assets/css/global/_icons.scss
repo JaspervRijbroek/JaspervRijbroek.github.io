@@ -2,6 +2,7 @@
   font-family: 'icons';
   src: url('../fonts/icons.eot');
   src: url('../fonts/icons.eot#iefix') format('embedded-opentype'),
+  url('../fonts/icons.woff2') format('woff2'),
   url('../fonts/icons.woff') format('woff'),
   url('../fonts/icons.ttf') format('truetype'),
   url('../fonts/icons.svg#icons') format('svg');
@@ -20,20 +21,23 @@
   font-variant: normal;
   text-transform: none;
   line-height: 1em;
+  width: 1em;
 }
 
 $icons: (
-        'facebook': '802',
-        'twitter': '801',
-        'facebook-squared': '800',
-        'twitter-1': '804',
-        'facebook-circled': '805',
-        'twitter-circled': '806',
-        'facebook-rect': '803'
+        'facebook-squared': '\e800',
+        'twitter': '\e801',
+        'facebook': '\e802',
+        'facebook-rect': '\e803',
+        'twitter-1': '\e804',
+        'facebook-circled': '\e805',
+        'twitter-circled': '\e806',
+        'sun': '\f185',
+        'moon': '\f186'
 );
 
 @each $name, $key in $icons {
   .icon-#{$name}:before {
-    content: '\e'+$key;
+    content: $key;
   }
 }

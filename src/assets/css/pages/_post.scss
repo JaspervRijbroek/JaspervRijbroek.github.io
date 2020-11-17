@@ -6,6 +6,10 @@
 
     .post__title {
       @apply font-light text-4xl;
+
+      .theme-dark & {
+        @apply text-gray-100;
+      }
     }
 
     .post__headline {
@@ -16,8 +20,16 @@
   &__body {
     @apply font-light;
 
+    .theme-dark & {
+      @apply text-gray-500;
+    }
+
     h2 {
       @apply font-normal mb-4 mt-4 text-lg;
+
+      .theme-dark & {
+        @apply text-gray-100;
+      }
     }
 
     p {

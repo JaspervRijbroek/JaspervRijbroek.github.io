@@ -1,5 +1,6 @@
 import React from "react"
 import {graphql, Link, useStaticQuery} from 'gatsby'
+import Switcher from "../switcher";
 
 const Navigation = ({isHome}) => {
     const pages = useStaticQuery(graphql`
@@ -21,6 +22,8 @@ const Navigation = ({isHome}) => {
         {pages.allContentfulPage && pages.allContentfulPage.edges && pages.allContentfulPage.edges.length > 0 && pages.allContentfulPage.edges.map((page, index) => (
             <Link to={`/${page.node.slug}`} className="nav__link" key={index}>{page.node.title}</Link>
         ))}
+
+        <Switcher />
     </nav>);
 };
 
