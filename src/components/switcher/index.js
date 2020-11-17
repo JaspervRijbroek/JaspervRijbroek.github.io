@@ -1,22 +1,18 @@
 import React from "react"
-import {connect} from 'react-redux';
+import {ThemeContext} from "../context/theme";
 
-class Switcher extends React.Component {
+export default class Switcher extends React.Component {
     toggleColorScheme() {
         this.props.dispatch({type: 'toggleColorScheme'})
     }
 
     render() {
         return (
-            <span onClick={this.toggleColorScheme.bind(this)} className={'nav__link theme-switcher icon-' + (this.props.colorScheme === 'dark' ? 'sun' : 'moon')} />
+            <ThemeContext.Consumer>
+                {(value) => (
+                    <span onClick={value.toggleTheme} className={'nav__link theme-switcher icon-' + (value.theme === 'dark' ? 'sun' : 'moon')} />
+                )}
+            </ThemeContext.Consumer>
         );
     }
 }
-
-export default connect((state) => {
-    let {colorScheme} = state;
-
-    return {
-        colorScheme
-    };
-})(Switcher)
