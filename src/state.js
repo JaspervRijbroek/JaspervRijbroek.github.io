@@ -9,6 +9,14 @@ const reducer = (state, action) => {
     return state
 }
 
+
+
 export const store = createStore(reducer, {
-    colorScheme: (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light'
+    colorScheme: function() {
+        if (typeof window !== `undefined`) {
+            return (window && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light'
+        }
+
+        return false;
+    }()
 });
