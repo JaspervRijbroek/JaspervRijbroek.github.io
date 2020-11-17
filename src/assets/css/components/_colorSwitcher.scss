@@ -1,0 +1,11 @@
+.theme-switcher {
+  &.icon {
+    &-sun {
+      @apply text-yellow-600;
+    }
+
+    &-moon {
+      @apply text-indigo-600;
+    }
+  }
+}
