@@ -17,10 +17,6 @@
   a {
     @apply text-gray-700 block font-bold text-lg;
 
-    .theme-dark & {
-      @apply text-gray-100;
-    }
-
     .dates {
       @apply text-gray-500 text-base font-light float-right transition-all duration-300;
     }
@@ -43,6 +39,14 @@
 
     &:last-of-type {
       @apply pb-0;
+    }
+  }
+}
+
+@screen dark {
+  .list-row {
+    a {
+      @apply text-gray-100;
     }
   }
 }

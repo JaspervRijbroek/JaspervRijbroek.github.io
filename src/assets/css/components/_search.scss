@@ -3,8 +3,12 @@
 
   &__input {
     @apply mb-10 p-1 w-full rounded border border-gray-500;
+  }
+}
 
-    .theme-dark & {
+@screen dark {
+  .search {
+    &__input {
       @apply bg-gray-900;
     }
   }

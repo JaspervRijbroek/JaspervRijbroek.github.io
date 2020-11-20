@@ -6,10 +6,6 @@
 
     .post__title {
       @apply font-light text-4xl;
-
-      .theme-dark & {
-        @apply text-gray-100;
-      }
     }
 
     .post__headline {
@@ -20,20 +16,30 @@
   &__body {
     @apply font-light;
 
-    .theme-dark & {
-      @apply text-gray-500;
-    }
-
     h2 {
       @apply font-normal mb-4 mt-4 text-lg;
-
-      .theme-dark & {
-        @apply text-gray-100;
-      }
     }
 
     p {
       @apply mb-5 leading-relaxed;
+    }
+  }
+}
+
+@screen dark {
+  .post {
+    &__header {
+      .post__title {
+        @apply text-gray-100;
+      }
+    }
+
+    &__body {
+      @apply text-gray-500;
+
+      h2 {
+        @apply text-gray-100;
+      }
     }
   }
 }

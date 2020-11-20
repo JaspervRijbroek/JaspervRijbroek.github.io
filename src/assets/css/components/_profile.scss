@@ -13,10 +13,6 @@
 
   &__title {
     @apply text-xl text-gray-900;
-
-    .theme-dark & {
-      @apply text-gray-100;
-    }
   }
 
   &__slogan {
@@ -24,16 +20,12 @@
   }
 
   &--footer {
-    @apply my-8 py-8/* border-t border-b border-gray-400*/;
+    @apply my-8 py-8;
 
     .profile__avatar {
       @apply w-8 h-8 rounded-full mt-1 mr-5 float-left;
 
       box-shadow: 0 0 0 3px #fff, 0 0 0 4px #eee;
-
-      .theme-dark & {
-        box-shadow: 0 0 0 3px #1a202c, 0 0 0 4px #eee;
-      }
     }
 
     .profile__slogan {
@@ -42,6 +34,24 @@
 
     .profile__title {
       @apply block text-sm;
+    }
+  }
+}
+
+@screen dark {
+  .profile {
+    &__title {
+      @apply text-gray-100;
+    }
+
+    &__title {
+      @apply text-gray-100;
+    }
+
+    &--footer {
+      .profile__avatar {
+        box-shadow: 0 0 0 3px #1a202c, 0 0 0 4px #eee;
+      }
     }
   }
 }

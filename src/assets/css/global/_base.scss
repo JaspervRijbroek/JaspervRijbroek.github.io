@@ -1,9 +1,5 @@
 body, html {
   font-family: 'Roboto', sans-serif;
-
-  .theme-dark {
-    @apply bg-gray-900;
-  }
 }
 
 * {
@@ -19,5 +15,11 @@ a {
 
   &:hover {
     @apply border-opacity-100;
+  }
+}
+
+@screen dark {
+  body, html {
+    @apply bg-gray-900;
   }
 }

@@ -3,7 +3,6 @@ import {Profile} from "../components/profile/index";
 import Footer from "../components/footer/index";
 import {Helmet} from "react-helmet";
 import Navigation from "../components/navigation/index";
-import {ThemeContext} from "../components/context/theme";
 
 export default class DefaultTemplate extends Component {
     constructor() {
@@ -24,18 +23,13 @@ export default class DefaultTemplate extends Component {
 
     render() {
         return (
-            <ThemeContext.Provider value={this.state}>
-                <ThemeContext.Consumer>
-                    {(theme) => {
-                        return (<Helmet>
-                            <html lang="en"/>
-                            <meta charSet="utf-8"/>
-                            <meta name="description" content="Personal ramblings of a professional developer"/>
-                            <meta name="author" content="Jasper van Rijbroek"/>
-                            <body className={this.state.theme ? `theme-${this.state.theme}` : ''}/>
-                        </Helmet>);
-                    }}
-                </ThemeContext.Consumer>
+            <div>
+                <Helmet>
+                    <html lang="en"/>
+                    <meta charSet="utf-8"/>
+                    <meta name="description" content="Personal ramblings of a professional developer"/>
+                    <meta name="author" content="Jasper van Rijbroek"/>
+                </Helmet>
 
                 <Navigation isHome={this.props.isHome}/>
 
@@ -46,7 +40,7 @@ export default class DefaultTemplate extends Component {
 
                     <Footer/>
                 </section>
-            </ThemeContext.Provider>
+            </div>
         )
     }
 };
