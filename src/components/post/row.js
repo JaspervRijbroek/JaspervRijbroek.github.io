@@ -7,7 +7,7 @@ const PostRow = ({post, isArchive = false}) => {
     return (
     <li className={"list-row" + (isArchive ? ' archive' : '')}>
         <Link title={[post.title]} to={post.fields.path}>
-            <aside className="dates">{post.date}</aside>
+            <aside className="dates">{post.createdOn}</aside>
 
             {post.title}
             {!isArchive && post.teaser && (<h2>{post.teaser.childMarkdownRemark.html.replace(/(<([^>]+)>)/gi, "")}</h2>)}

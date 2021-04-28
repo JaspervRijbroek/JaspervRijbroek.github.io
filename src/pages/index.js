@@ -95,6 +95,7 @@ export const IndexPageQuery = graphql`
             id
             title
             slug
+            createdOn(formatString: "MMMM DD, YYYY")
             teaser {
               childMarkdownRemark {
                 html

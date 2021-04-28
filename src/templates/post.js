@@ -33,8 +33,8 @@ const BlogTemplate = ({data}) => {
 
             <Profile isFooter={true}/>
 
-            {data && data.allMarkdownRemark && data.allMarkdownRemark.nodes && data.allMarkdownRemark.nodes.length > 0 && (
-                <PostList posts={data.allMarkdownRemark.nodes} isArchive={true} />
+            {data && data.allContentfulPost && data.allContentfulPost.nodes && data.allContentfulPost.nodes.length > 0 && (
+                <PostList posts={data.allContentfulPost.nodes} isArchive={true} />
             )}
 
         </DefaultTemplate>
@@ -42,7 +42,7 @@ const BlogTemplate = ({data}) => {
 };
 
 export const pageQuery = graphql`
-  query($id: String!) {
+  query($id: String!, $topics: [String]!) {
     contentfulPost(id: { eq: $id }) {
       title
       body {
@@ -56,6 +56,21 @@ export const pageQuery = graphql`
         title
         slug
       }
+    }
+    allContentfulPost(filter: {topics: {elemMatch: {id: {in: $topics}}}, id: {ne: $id}}, sort: {fields: createdOn, order: DESC}, limit: 5) {
+            nodes {
+                id
+                title
+                createdOn(formatString: "MMMM DD, YYYY")
+                body {
+                  childMarkdownRemark {
+                    html
+                  }
+                }
+                fields {
+                    path
+                }
+            }
     }
   }
 `;

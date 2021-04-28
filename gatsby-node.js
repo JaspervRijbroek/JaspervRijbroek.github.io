@@ -26,6 +26,9 @@ exports.createPages = async ({actions, graphql, reporter}) => {
                     fields {
                       path
                     }
+                    topics {
+                        id
+                    }
                   }
                 }
               }
@@ -69,11 +72,14 @@ exports.createPages = async ({actions, graphql, reporter}) => {
         .allContentfulPost
         .edges
         .forEach(({node}) => {
+            console.log(node.topics.map(topic => topic.id) || [])
+
             createPage({
                 path: node.fields.path,
                 component: postTemplate,
                 context: {
-                    id: node.id
+                    id: node.id,
+                    topics: node.topics.map(topic => topic.id) || []
                 }
             })
         });

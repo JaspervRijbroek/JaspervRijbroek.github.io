@@ -5,6 +5,10 @@
 
   &__header {
     @apply border-b border-gray-400 text-center mb-10 pb-10;
+
+    a {
+      @apply border-b-0;
+    }
   }
 
   &__avatar {
