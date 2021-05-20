@@ -1,14 +1,14 @@
 .pager {
-  @apply pt-5 mt-10 text-xs font-bold text-center border-t border-gray-400;
+  @apply pt-5 mt-5 text-xs font-bold text-center;
 
   span {
-    @apply transition-all duration-100 relative;
+    @apply transition-all duration-150 relative;
 
     &.prev {
       @apply float-left;
 
       &:hover {
-        left: -3px;
+        margin-left: -3px;
       }
     }
 
@@ -16,14 +16,14 @@
       @apply float-right;
 
       &:hover {
-        right: -3px;
+        margin-right: -3px;
       }
     }
 
     &.prev,
     &.next {
       button {
-        @apply text-blue-500 border-0;
+        @apply text-blue-400 border-0;
       }
     }
   }

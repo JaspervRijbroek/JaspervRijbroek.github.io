@@ -9,16 +9,8 @@ export default class DefaultTemplate extends Component {
         super();
 
         this.state = {
-            theme: typeof window !== `undefined` ? (window && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : false,
-            toggleTheme: this.toggleTheme.bind(this)
+            theme: typeof window !== `undefined` ? (window && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : false
         }
-    }
-
-    toggleTheme() {
-        this.setState(state => ({
-            theme:
-                state.theme === 'dark' ? 'light' : 'dark',
-        }));
     }
 
     render() {
@@ -35,7 +27,7 @@ export default class DefaultTemplate extends Component {
 
                 {this.props.isPage && (<Profile/>)}
 
-                <section className={'wrapper' + (this.props.isHome ? ' home' : '')}>
+                <section className={'wrapper' + (this.props.isHome ? ' wrapper--home' : '')}>
                     {this.props.children}
 
                     <Footer/>

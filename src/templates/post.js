@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet"
 import {Profile} from "../components/profile/index";
 import TopicList from "../components/topic/list";
 import PostList from "../components/post/list";
+import Img from "gatsby-image";
 
 const BlogTemplate = ({data}) => {
     return (
@@ -14,6 +15,12 @@ const BlogTemplate = ({data}) => {
             </Helmet>
 
             <article className="post">
+                {data.contentfulPost && data.contentfulPost.image && data.contentfulPost.image.childImageSharp && data.contentfulPost.image.childImageSharp.fluid && (
+                    <Img fluid={data.contentfulPost.image.childImageSharp.fluid} className='post__backdrop' style={{
+                        position: 'absolute'
+                    }} />
+                )}
+
                 <header className="post__header">
                     <h1 className="post__title">
                         {data.contentfulPost.title}
@@ -50,6 +57,13 @@ export const pageQuery = graphql`
           html
         }
       }
+      image {
+          childImageSharp {
+            fluid(maxWidth: 2140, maxHeight: 450) {
+              ...GatsbyImageSharpFluid_withWebp
+            }              
+          }
+        }
       createdOn(formatString: "MMMM DD, YYYY")
       topics {
         id

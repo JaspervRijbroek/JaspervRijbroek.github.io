@@ -7,26 +7,68 @@
   }
 
   & + .list-row {
-    @apply pt-8 border-t border-gray-400;
+    @apply pt-8 border-t border-gray-300;
   }
 
-  h2 {
-    @apply w-2/3 text-gray-500 mt-0 text-base;
+  &__subtitle {
+    @apply text-gray-400 mt-0 text-base font-normal;
   }
 
-  a {
+  &__title {
     @apply text-gray-700 block font-bold text-lg;
+  }
 
-    .dates {
-      @apply text-gray-500 text-base font-light float-right transition-all duration-300;
+  &__container {
+    &:hover {
+      @apply border-opacity-0;
+    }
+  }
+
+  &__image-container, &__dates, &__content {
+    @apply inline-block align-top;
+  }
+
+  &__image-container {
+    @apply relative w-2/12 h-20 hidden;
+
+    @screen lg {
+      @apply inline-block;
     }
 
-    &:hover {
-      @apply border-opacity-0 text-blue-500;
+    .list-row__image {
+      @apply rounded-xl transition-all duration-300 absolute filter blur-0 w-20 h-20;
 
-      .dates {
-        @apply text-blue-500;
+      &:last-of-type {
+        z-index: -1;
       }
+    }
+  }
+
+  &__dates {
+    @apply text-gray-400 text-base font-light text-right w-3/12;
+  }
+
+  &__content {
+    @apply w-9/12;
+  }
+
+  &__image-container + &__content {
+    @apply w-7/12;
+  }
+
+  &__dates,
+  &__title {
+    @apply transition-all duration-300;
+  }
+
+  &:hover {
+    .list-row__dates,
+    .list-row__title {
+      @apply text-blue-400;
+    }
+
+    .list-row__image:last-of-type {
+      @apply blur-lg;
     }
   }
 
@@ -34,7 +76,7 @@
     @apply py-4;
 
     a {
-      @apply text-base;
+      @apply text-base font-normal;
     }
 
     &:last-of-type {

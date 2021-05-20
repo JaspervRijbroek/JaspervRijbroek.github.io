@@ -1,10 +1,25 @@
 const path = require('path');
+const {createRemoteFileNode} = require('gatsby-source-filesystem');
 
-exports.onCreateNode = ({node, actions}) => {
-    const {createNodeField} = actions;
+exports.onCreateNode = async ({node, actions, store, cache}) => {
+    const {createNodeField, createNode} = actions;
 
     if (node.internal.type === `ContentfulPost`) {
         const [, year] = node.createdOn.match(/^([\d]{4})/);
+
+        if(node.image) {
+            let image = await createRemoteFileNode({
+                url: `https://source.unsplash.com/${node.image}/2160x450`,
+                createNodeId: () => node.image,
+                parentNodeId: node.id,
+                createNode,
+                store,
+                cache,
+                ext: '.jpeg'
+            });
+
+            node.image___NODE = image.id;
+        }
 
         createNodeField({node, name: `path`, value: `/${year}/${node.slug}`});
         createNodeField({node, name: `date`, value: node.createdOn});
@@ -72,8 +87,6 @@ exports.createPages = async ({actions, graphql, reporter}) => {
         .allContentfulPost
         .edges
         .forEach(({node}) => {
-            console.log(node.topics.map(topic => topic.id) || [])
-
             createPage({
                 path: node.fields.path,
                 component: postTemplate,

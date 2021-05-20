@@ -1,7 +1,15 @@
+.wrapper > .footer {
+  @apply mx-auto;
+
+  @screen lg {
+    max-width: 40rem;
+  }
+}
+
 .footer {
-  @apply border-t border-gray-400 pt-6 text-center mt-24;
+  @apply border-t border-gray-300 pt-6 text-center mt-24;
 
   &__text {
-    @apply text-xs text-gray-500;
+    @apply text-xs text-gray-400;
   }
 }

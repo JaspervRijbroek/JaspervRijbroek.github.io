@@ -1,6 +1,19 @@
 .post {
   @apply my-10;
 
+  @screen lg {
+    @apply mt-32 bg-white p-12 rounded-t-xl;
+  }
+
+  &__backdrop {
+    @apply absolute top-0 left-0 w-screen hidden filter brightness-50;
+    z-index: -2;
+
+    @screen lg {
+      @apply block;
+    }
+  }
+
   &__header {
     @apply text-center;
 
@@ -23,6 +36,10 @@
     p {
       @apply mb-5 leading-relaxed;
     }
+
+    b, strong {
+      @apply font-bold;
+    }
   }
 }
 
@@ -35,7 +52,7 @@
     }
 
     &__body {
-      @apply text-gray-500;
+      @apply text-gray-400;
 
       h2 {
         @apply text-gray-100;

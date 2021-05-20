@@ -96,6 +96,13 @@ export const IndexPageQuery = graphql`
             title
             slug
             createdOn(formatString: "MMMM DD, YYYY")
+            image {
+              childImageSharp {
+                fluid(maxWidth: 80, maxHeight: 80) {
+                  ...GatsbyImageSharpFluid_withWebp
+                }              
+              }
+            }
             teaser {
               childMarkdownRemark {
                 html

@@ -30,8 +30,13 @@ export const Profile = ({isFooter = false}) => {
             <section className="profile__wrapper">
                 <header className="profile__header">
                     <Link to='/about' title='About'>
-                        <span>
-                            <Img fluid={data.allContentfulAsset.edges[0].node.fluid} className="profile__avatar" />
+                        <span className='profile__avatar__container'>
+                            <Img fluid={data.allContentfulAsset.edges[0].node.fluid} className="profile__avatar" style={{
+                                position: 'absolute'
+                            }} />
+                            <Img fluid={data.allContentfulAsset.edges[0].node.fluid} className="profile__avatar" style={{
+                                position: 'absolute'
+                            }} />
                         </span>
                     </Link>
 
