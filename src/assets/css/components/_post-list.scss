@@ -1,11 +1,15 @@
 .post-list {
   &--archive {
-    @screen lg {
-      @apply max-w-2xl mx-auto px-4;
-    }
-
     .post-list__title {
       @apply text-lg;
+    }
+  }
+}
+
+@screen md {
+  .post-list {
+    &--archive {
+      @apply max-w-2xl mx-auto px-4;
     }
   }
 }

@@ -1,9 +1,5 @@
 .wrapper > .footer {
   @apply mx-auto;
-
-  @screen lg {
-    max-width: 40rem;
-  }
 }
 
 .footer {
@@ -11,5 +7,11 @@
 
   &__text {
     @apply text-xs text-gray-400;
+  }
+}
+
+@screen md {
+  .wrapper > .footer {
+    max-width: 40rem;
   }
 }

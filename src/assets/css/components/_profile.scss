@@ -44,10 +44,6 @@
   &--footer {
     @apply my-8 py-8;
 
-    @screen lg {
-      @apply max-w-2xl mx-auto px-4;
-    }
-
     .profile__avatar {
       @apply w-8 h-8 rounded-full mt-1 mr-5 float-left;
 
@@ -60,6 +56,14 @@
 
     .profile__title {
       @apply block text-sm;
+    }
+  }
+}
+
+@screen md {
+  .profile {
+    &--footer {
+      @apply max-w-2xl mx-auto px-4;
     }
   }
 }
