@@ -54,7 +54,7 @@ export const Profile = ({isFooter = false}) => {
         <footer className="profile profile--footer">
             <Link to='/about'>
                 <span>
-                    <GatsbyImage image={getImage(data.allContentfulAsset.edges[0].node)} />
+                    <GatsbyImage image={getImage(data.allContentfulAsset.edges[0].node)} className="profile__avatar" />
                 </span>
                 <div className="profile__meta">
                     <span className="profile__title">{data.site.siteMetadata.me.title}</span>
