@@ -52,4 +52,4 @@ jobs:
         GOOGLE_ANALYTICS_KEY: "UA-32550863-6"
 
     - name: Deploy gatsby
-      run: yarn run gh-pages -d public -b master -u "Jasper van Rijbroek" ''<'"jasper@jvar.nl"'>' -r 'https://${{ secrets.push_token }}@github.com/'"$GITHUB_REPOSITORY"'.git' -m 'Build of '"$GITHUB_SHA"''
+      run: yarn run gh-pages -d public -b master -u "Jasper van Rijbroek <jasper@jvar.nl>" -r 'https://${{ secrets.push_token }}@github.com/'"$GITHUB_REPOSITORY"'.git' -m 'Build of '"$GITHUB_SHA"''
