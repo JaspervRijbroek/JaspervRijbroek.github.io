@@ -15,16 +15,48 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Publish Gatsby Site
-      uses: xmflsct/action-publish-gatsby@v1.0.0
-      env:
-        ALGOLIA_APP_ID: ${{ secrets.algolia_app_id }}
-        ALGOLIA_ADMIN_KEY: ${{ secrets.algolia_admin_key }}
-        CONTENTFUL_SPACE_ID: ${{ secrets.contentful_space_id }}
-        CONTENTFUL_ACCESS_TOKEN: ${{ secrets.contentful_access_token }}
-        GOOGLE_ANALYTICS_KEY: "UA-32550863-6"
+    - name: Cache yarn directory
+      id: yarn-cache-dir
+      run: echo "::set-output name=dir::$(yarn cache dir)"
+
+    - name: Yarn cache
+      uses: actions/cache@v1
       with:
-        publishBranch: "master"
-        token: ${{ secrets.push_token }}
-        name: "Jasper van Rijbroek"
-        email: "jasper@jvar.nl"
+        path: ${{ steps.yarn-cache-dir.outputs.dir }}
+        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-yarn-
+
+    - name: Yarn install
+      run: 'yarn install --pure-lockfile'
+
+    - name: Gatsby Cache Folder
+      uses: actions/cache@v1
+      with:
+        key: gatsby-cache-folder
+        path: .cache
+
+    - name: Gatsby Public Folder
+      uses: actions/cache@v1
+      with:
+        key: gatsby-public-folder
+        path: public
+
+    - name: Build app
+      run: 'yarn run build:incremental'
+
+
+
+#    - name: Publish Gatsby Site
+#      uses: xmflsct/action-publish-gatsby@v1.0.0
+#      env:
+#        ALGOLIA_APP_ID: ${{ secrets.algolia_app_id }}
+#        ALGOLIA_ADMIN_KEY: ${{ secrets.algolia_admin_key }}
+#        CONTENTFUL_SPACE_ID: ${{ secrets.contentful_space_id }}
+#        CONTENTFUL_ACCESS_TOKEN: ${{ secrets.contentful_access_token }}
+#        GOOGLE_ANALYTICS_KEY: "UA-32550863-6"
+#      with:
+#        publishBranch: "master"
+#        token: ${{ secrets.push_token }}
+#        name: "Jasper van Rijbroek"
+#        email: "jasper@jvar.nl"
