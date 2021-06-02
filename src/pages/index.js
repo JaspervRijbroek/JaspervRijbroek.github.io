@@ -98,9 +98,12 @@ export const IndexPageQuery = graphql`
             createdOn(formatString: "MMMM DD, YYYY")
             image {
               childImageSharp {
-                fluid(maxWidth: 80, maxHeight: 80) {
-                  ...GatsbyImageSharpFluid_withWebp
-                }              
+                gatsbyImageData(
+                  width: 80
+                  height: 80
+                  placeholder: BLURRED
+                  formats: [AUTO, WEBP]
+                )   
               }
             }
             teaser {

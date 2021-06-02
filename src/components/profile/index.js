@@ -1,6 +1,6 @@
 import React from "react"
 import {graphql, useStaticQuery, Link} from "gatsby";
-import Img from "gatsby-image"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 export const Profile = ({isFooter = false}) => {
     const data = useStaticQuery(graphql`
@@ -16,9 +16,12 @@ export const Profile = ({isFooter = false}) => {
       allContentfulAsset(filter: {contentful_id: {eq: "4D7wk8EA9cVB6z2QX5RtIX"}}) {
         edges {
           node {
-            fluid(maxWidth: 80, maxHeight: 80) {
-              ...GatsbyContentfulFluid_withWebp
-            }
+            gatsbyImageData(
+              width: 80
+              height: 80
+              placeholder: BLURRED
+              formats: [AUTO, WEBP]
+            )
           }
         }
       }
@@ -31,10 +34,10 @@ export const Profile = ({isFooter = false}) => {
                 <header className="profile__header">
                     <Link to='/about' title='About'>
                         <span className='profile__avatar__container'>
-                            <Img fluid={data.allContentfulAsset.edges[0].node.fluid} className="profile__avatar" style={{
+                            <GatsbyImage image={getImage(data.allContentfulAsset.edges[0].node)} className="profile__avatar" style={{
                                 position: 'absolute'
                             }} />
-                            <Img fluid={data.allContentfulAsset.edges[0].node.fluid} className="profile__avatar" style={{
+                            <GatsbyImage image={getImage(data.allContentfulAsset.edges[0].node)} className="profile__avatar" style={{
                                 position: 'absolute'
                             }} />
                         </span>
@@ -51,7 +54,7 @@ export const Profile = ({isFooter = false}) => {
         <footer className="profile profile--footer">
             <Link to='/about'>
                 <span>
-                    <Img className="profile__avatar" fluid={data.allContentfulAsset.edges[0].node.fluid}/>
+                    <GatsbyImage image={getImage(data.allContentfulAsset.edges[0].node)} />
                 </span>
                 <div className="profile__meta">
                     <span className="profile__title">{data.site.siteMetadata.me.title}</span>

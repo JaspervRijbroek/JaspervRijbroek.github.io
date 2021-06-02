@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet"
 import {Profile} from "../components/profile/index";
 import TopicList from "../components/topic/list";
 import PostList from "../components/post/list";
-import Img from "gatsby-image";
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 const BlogTemplate = ({data}) => {
     return (
@@ -15,8 +15,8 @@ const BlogTemplate = ({data}) => {
             </Helmet>
 
             <article className="post">
-                {data.contentfulPost && data.contentfulPost.image && data.contentfulPost.image.childImageSharp && data.contentfulPost.image.childImageSharp.fluid && (
-                    <Img fluid={data.contentfulPost.image.childImageSharp.fluid} className='post__backdrop' style={{
+                {data.contentfulPost && data.contentfulPost.image && data.contentfulPost.image.childImageSharp && (
+                    <GatsbyImage image={getImage(data.contentfulPost.image.childImageSharp)} className='post__backdrop' style={{
                         position: 'absolute'
                     }} />
                 )}
@@ -58,12 +58,15 @@ export const pageQuery = graphql`
         }
       }
       image {
-          childImageSharp {
-            fluid(maxWidth: 2140, maxHeight: 450) {
-              ...GatsbyImageSharpFluid_withWebp
-            }              
-          }
+        childImageSharp {
+          gatsbyImageData(
+            width: 2140
+            height: 450
+            placeholder: BLURRED
+            formats: [AUTO, WEBP]
+          )
         }
+      }
       createdOn(formatString: "MMMM DD, YYYY")
       topics {
         id

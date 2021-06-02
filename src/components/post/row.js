@@ -1,6 +1,6 @@
 import React from "react"
 import {Link} from 'gatsby'
-import Img from "gatsby-image";
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 const PostRow = ({post, isArchive = false}) => {
     post = post.node || post;
@@ -8,12 +8,12 @@ const PostRow = ({post, isArchive = false}) => {
     return (
     <li className={"list-row" + (isArchive ? ' archive' : '')}>
         <Link title={[post.title]} to={post.fields.path} className='list-row__container'>
-            {!isArchive && post.image && post.image.childImageSharp && post.image.childImageSharp.fluid && (
+            {!isArchive && post.image && post.image.childImageSharp && (
                 <div className='list-row__image-container'>
-                    <Img fluid={post.image.childImageSharp.fluid} className='list-row__image' style={{
+                    <GatsbyImage image={getImage(post.image.childImageSharp)} className='list-row__image' style={{
                         position: 'absolute'
                     }} />
-                    <Img fluid={post.image.childImageSharp.fluid} className='list-row__image' style={{
+                    <GatsbyImage image={getImage(post.image.childImageSharp)} className='list-row__image' style={{
                         position: 'absolute'
                     }} />
                 </div>
