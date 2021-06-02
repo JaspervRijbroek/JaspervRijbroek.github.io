@@ -42,7 +42,7 @@ jobs:
         key: gatsby-public-folder
         path: public
 
-    - name: Build app
+    - name: Build gatsby
       run: 'yarn run build:incremental'
       env:
         ALGOLIA_APP_ID: ${{ secrets.algolia_app_id }}
@@ -51,13 +51,10 @@ jobs:
         CONTENTFUL_ACCESS_TOKEN: ${{ secrets.contentful_access_token }}
         GOOGLE_ANALYTICS_KEY: "UA-32550863-6"
 
-
-
-#    - name: Publish Gatsby Site
-#      uses: xmflsct/action-publish-gatsby@v1.0.0
-#
-#      with:
-#        publishBranch: "master"
-#        token: ${{ secrets.push_token }}
-#        name: "Jasper van Rijbroek"
-#        email: "jasper@jvar.nl"
+    - name: Deploy gatsby
+      run: yarn run gh-pages -d public -b $1 -u ''"$3"' ''<'"$4"'>' -r 'https://'"$2"'@github.com/'"$GITHUB_REPOSITORY"'.git' -m 'Build of '"$GITHUB_SHA"''
+      with:
+        publishBranch: "master"
+        token: ${{ secrets.push_token }}
+        name: "Jasper van Rijbroek"
+        email: "jasper@jvar.nl"
