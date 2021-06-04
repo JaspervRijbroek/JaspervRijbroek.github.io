@@ -35,10 +35,12 @@ export const Profile = ({isFooter = false}) => {
                     <Link to='/about' title='About'>
                         <span className='profile__avatar__container'>
                             <GatsbyImage image={getImage(data.allContentfulAsset.edges[0].node)} className="profile__avatar" style={{
-                                position: 'absolute'
+                                position: 'absolute',
+                                display: 'block'
                             }} />
                             <GatsbyImage image={getImage(data.allContentfulAsset.edges[0].node)} className="profile__avatar" style={{
-                                position: 'absolute'
+                                position: 'absolute',
+                                display: 'block'
                             }} />
                         </span>
                     </Link>
