@@ -7,7 +7,7 @@ const PostList = ({posts, isArchive = false}) => (
 
         <ul>
             {posts && posts.map((post, index) => (
-                <PostRow post={post} isArchive={isArchive} key={index} />
+                <PostRow post={post} isArchive={isArchive} key={(post.node || post).id} />
             ))}
         </ul>
     </div>

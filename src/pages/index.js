@@ -5,6 +5,7 @@ import algoliasearch from 'algoliasearch';
 import SearchBar from "../components/search/bar";
 import PostList from "../components/post/list";
 import Pagination from "../components/pagination";
+import {AnimatePresence} from "framer-motion";
 
 const client = algoliasearch('IMR7H3NXXW', 'c559f11f4c0ecb1bf2540a712cda78d5');
 const index = client.initIndex('Posts');
@@ -72,9 +73,11 @@ export default class IndexPage extends React.Component {
             <PageTemplate isHome={true}>
                 <SearchBar onKeyUp={(event) => this.updateSearch(event.target.value)} />
 
-                {posts && posts.length > 0 && (
-                    <PostList posts={currentPosts} />
-                )}
+                <AnimatePresence>
+                    {posts && posts.length > 0 && (
+                        <PostList posts={currentPosts} />
+                    )}
+                </AnimatePresence>
 
                 {(!posts || !posts.length) && (
                     <p>No posts found!</p>
