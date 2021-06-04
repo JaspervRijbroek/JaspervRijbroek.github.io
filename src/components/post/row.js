@@ -7,7 +7,7 @@ const PostRow = ({post, isArchive = false}) => {
     post = post.node || post;
 
     return (
-        <motion.li initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 1}} className={"list-row" + (isArchive ? ' archive' : '')} key={post.id}>
+        <motion.li initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 1}} transition={{ease: 'easeInOut', duration: .3}} className={"list-row" + (isArchive ? ' archive' : '')} key={post.id}>
             <Link title={[post.title]} to={post.fields.path} className='list-row__container'>
                 {!isArchive && post.image && post.image.childImageSharp && (
                     <div className='list-row__image-container'>
